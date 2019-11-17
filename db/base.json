@@ -1,6 +1,6 @@
 {
-  "airports" : "airports",
-  "planes" : "",
+  "airports" : "",
+  "planes" : "planes",
   "crew" : "",
   "food" : "",
   "baggage" : ""
