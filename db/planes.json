@@ -1,5 +1,6 @@
 {
   "plane1": {
+    "id": "plane1",
     "team": "Team-A",
     "airport": "BNA",
     "planeNum": "NA615",
@@ -7,6 +8,7 @@
     "capacity": 185
   },
   "plane2": {
+    "id": "plane2",
     "team": "Team-B",
     "airport": "LAX",
     "planeNum": "LA213",
@@ -14,6 +16,7 @@
     "capacity": 450
   },
   "plane3": {
+    "id": "plane3",
     "team": "Team-A",
     "airport": "NOL",
     "planeNum": "NO504",
@@ -21,6 +24,7 @@
     "capacity": 300
   },
   "plane4": {
+    "id": "plane4",
     "team": "Team-B",
     "airport": "ATL",
     "planeNum": "SW404",
@@ -28,6 +32,7 @@
     "capacity": 200
   },
   "plane5": {
+    "id": "plane5",
     "team": "Team-C",
     "airport": "CHI",
     "planeNum": "SW312",
