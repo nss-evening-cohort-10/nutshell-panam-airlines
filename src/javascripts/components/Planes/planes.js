@@ -8,10 +8,11 @@ const buildPlanes = (planeId) => {
   planesData.getPlanesByPlaneId(planeId)
     .then((planes) => {
       let domString = '<h1>Fleet Inventory & Maintenance</h1>';
+      domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {
         domString += PlanesBuilder.makeAPlane(plane);
-        domString += '</div>';
       });
+      domString += '</div>';
       utilities.printToDom('planes', domString);
     })
     .catch((error) => console.error(error));
