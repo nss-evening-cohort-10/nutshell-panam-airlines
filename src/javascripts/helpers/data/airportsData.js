@@ -17,6 +17,4 @@ const getAllAirports = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteAirport = (airportId) => axios.delete(`${baseUrl}/airports/${airportId}.json`);
-
-export default { getAllAirports, deleteAirport };
+export default { getAllAirports };
