@@ -1,5 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
 
+#panam-nav-logo {
+  height: 80px;
+}
+
+.btn-group {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 body {
-  background-color: pink;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Pan_Am_Logo.svg/1200px-Pan_Am_Logo.svg.png");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 60%; /* Resize the background image to cover the entire container */
+  background-position-x: center;
+}
+
+.panamblue {
+  background-color: white;
 }
