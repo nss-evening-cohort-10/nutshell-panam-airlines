@@ -1,0 +1,10 @@
+.card{
+  margin: 25px;
+  display: flex;  
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.delete, .edit {
+  margin: 5px;
+}

@@ -6,13 +6,14 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 const getPlanesByPlaneId = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/planes.json`)
     .then((response) => {
+      console.log(response);
       const daPlanes = response.data;
       const planes = [];
       Object.keys(daPlanes).forEach((fbId) => {
         daPlanes[fbId].id = fbId;
         planes.push(daPlanes[fbId]);
       });
-      resolve(resolve);
+      resolve(planes);
     })
     .catch((error) => reject(error));
 });
