@@ -17,7 +17,7 @@ const hideAirports = () => {
 
 const deleteAirport = (e) => {
   e.preventDefault();
-  const airportId = $(e.target).attr('id');
+  const airportId = $(e.target.id);
   airportsData.removeAirport(airportId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -38,9 +38,9 @@ const createAirportCard = () => {
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
-            <button type="button" class="hide add-button btn btn-outline-secondary">Add</button>
-            <button type="button" class="hide edit-button btn btn-outline-warning">Edit</button>
-            <button type="button" class="hide delete-button btn btn-outline-danger" id="${airport.id}">Delete</button>
+            <button type="button" class="add-button btn btn-outline-secondary">Add</button>
+            <button type="button" class="edit-button btn btn-outline-warning">Edit</button>
+            <button type="button" class="delete-button btn btn-outline-danger" id="${airport.id}">Delete</button>
           </div>
         </div>
         `;
