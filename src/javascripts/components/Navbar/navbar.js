@@ -1,6 +1,27 @@
-// import $ from 'jquery';
+import $ from 'jquery';
+import airport from '../Airports/airport';
+import crew from '../crew/crew';
+import food from '../foodService/foodService';
 // import firebase from 'firebase/app';
 // import 'firebase/auth';
+
+const displayHome = () => {
+  $('#home-link').on('click', () => {
+    $('#home').show();
+    $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#plane').hide();
+  });
+};
+
+const attachDropdownEvents = () => {
+  displayHome();
+  airport.displayAirports();
+  crew.displayCrew();
+  food.displayFood();
+};
+
 
 // const loginButton = $('#auth');
 // const logoutButton = $('#navbar-button-logout');
@@ -21,4 +42,4 @@
 //   })
 // };
 
-// export default { attachEvents };
+export default { attachDropdownEvents };
