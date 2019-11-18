@@ -5,7 +5,11 @@ import utilities from '../../helpers/utilities';
 
 const displayAirports = () => {
   $('#airports-link').on('click', () => {
+    $('#home').hide();
     $('#airports').show();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#plane').hide();
   });
 };
 

@@ -7,12 +7,10 @@ import crewData from '../../helpers/data/crewData';
 const displayCrew = () => {
   $('#crew-link').on('click', () => {
     $('#crew').show();
-  });
-};
-
-const hideCrew = () => {
-  $('.non-crew').on('click', () => {
-    $('#crew').hide();
+    $('#airports').hide();
+    $('#home').hide();
+    $('#foodModule').hide();
+    $('#plane').hide();
   });
 };
 
@@ -39,4 +37,4 @@ const createCrewCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createCrewCard, displayCrew, hideCrew };
+export default { createCrewCard, displayCrew };
