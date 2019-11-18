@@ -33,15 +33,15 @@ const PlaneModal = (plane) => {
           </div>
           <div class="form-group">
             <label for="airport" class="col-form-label">Airport:</label>
-            <textarea class="form-control" id="${plane.airport}">${plane.airport}</textarea>
+            <textarea class="form-control" id="${plane.airport}"></textarea>
           </div>
           <div class="form-group">
             <label for="team" class="col-form-label">Team:</label>
-            <textarea class="form-control" id="${plane.team}">${plane.team}</textarea>
+            <textarea class="form-control" id="${plane.team}"></textarea>
           </div>
           <div class="form-group">
             <label for="modelType" class="col-form-label">Model/Type:</label>
-            <textarea class="form-control" id="${plane.modelType}">${plane.modelType}</textarea>
+            <textarea class="form-control" id="${plane.modelType}"></textarea>
           </div>
           <div class="form-group">
             <label for="capacity" class="col-form-label">Capacity:</label>
@@ -51,7 +51,7 @@ const PlaneModal = (plane) => {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" id="save" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>`;
