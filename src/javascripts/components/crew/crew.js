@@ -6,8 +6,8 @@ import crewData from '../../helpers/data/crewData';
 const createCrewCard = () => {
   crewData.getAllCrewMembers()
     .then((crews) => {
-      let domString = '<h1>CREW MEMBERS</h1>';
-      domString += '<div id="crew-section" class="d-flex flex-wrap text-center">';
+      let domString = '<h1 class="crew-heading">FLIGHT CREW</h1>';
+      domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
       crews.forEach((crew) => {
         domString += `
         <div id="${crew.teamId}" class="card crew-card" style="width: 18rem;">
