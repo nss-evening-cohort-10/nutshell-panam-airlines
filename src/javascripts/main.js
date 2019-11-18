@@ -12,7 +12,7 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   authData.checkLoginStatus();
   navbar.attachDropdownEvents();
-  // navbar.attachEvents();
+  navbar.attachEvents();
   airport.createAirportCard();
   crew.createCrewCard();
   food.createFoodCards();
