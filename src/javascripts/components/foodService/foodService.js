@@ -14,16 +14,15 @@ const displayFood = () => {
 };
 
 const createFoodCards = () => {
-  let domString = '<h1>Food Service</h1>';
+  let domString = '<h1 class="text-center">Food Service</h1>';
   domString += '<div id="foodDivs" class="d-flex flex-wrap">';
-  foodData.getFoodByID()
+  foodData.getFood()
     .then((foods) => {
       // modulesToHide.empty();
       foods.forEach((food) => {
         domString += `
         <div class="card col-4 foodCard card-body">
-           <button class="btn btn-danger delete-foodItem"  id="${food.id}" style=" float: 
-              right;">X</button>
+           <button class="btn delete-foodItem"  id="${food.id}" style="margin-right:0; margin-left: auto; width: 2em;">X</button>
            <img src="${food.imageURL}" class="card-img-top" alt="..."/>
            <h5 class="card-title" id="food">${food.name}</h5>
             <p>${food.price}</p>
@@ -32,9 +31,10 @@ const createFoodCards = () => {
             <button type="button" class="btn btn-success" data-toggle="modal" data- 
              target="#exampleModal">
                 Edit
-             </button>`;
+             </button>
+        </div>`;
       });
-      domString += '</div></div>';
+      domString += '</div>';
       utilities.printToDom('foodModule', domString);
     })
     .catch((error) => console.error(error));
