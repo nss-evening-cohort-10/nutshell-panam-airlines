@@ -9,6 +9,7 @@ import crew from './components/crew/crew';
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   crew.createCrewCard();
+  crew.displayCrew();
 };
 
 init();

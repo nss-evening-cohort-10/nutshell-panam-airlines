@@ -1,7 +1,14 @@
+import $ from 'jquery';
 import './crew.scss';
 
 import utilities from '../../helpers/utilities';
 import crewData from '../../helpers/data/crewData';
+
+const displayCrew = () => {
+  $('#crew-link').on('click', () => {
+    $('#crew').show();
+  });
+};
 
 const createCrewCard = () => {
   crewData.getAllCrewMembers()
@@ -26,4 +33,4 @@ const createCrewCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createCrewCard };
+export default { createCrewCard, displayCrew };
