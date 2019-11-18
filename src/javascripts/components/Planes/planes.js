@@ -22,14 +22,33 @@ const deleteAPlane = (e) => {
 };
 
 const addNewPlane = (e) => {
-  
-}
+  e.stopImmediatePropagation();
+  // const domString = planesBuilder.addPlaneModal();
+  const { planeId } = e.target.id;
+  const newPlane = {
+    id: $('#plane-id').val(),
+    team: $('#team').val(),
+    airport: $('#airport').val(),
+    planeNum: $('#planeNum').val(),
+    modelType: $('#modelType').val(),
+    capacity: $('#capacity').val(),
+    planeId,
+  };
+  planesData.addNewPlane(newPlane)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildPlanes(planeId);
+      // utilities.printToDom('exampleModal', domString);
+    })
+    .catch((error) => console.error(error));
+};
 
 const buildPlanes = (planeId) => {
   planesData.getPlanesByPlaneId(planeId)
     .then((planes) => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
-      domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
+      domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
       domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {
         domString += PlanesBuilder.makeAPlane(plane);
@@ -37,6 +56,7 @@ const buildPlanes = (planeId) => {
       domString += '</div>';
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
+      $('#add-new-plane').click(addNewPlane);
     })
     .catch((error) => console.error(error));
 };
