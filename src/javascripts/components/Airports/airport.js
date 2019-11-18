@@ -27,6 +27,9 @@ const createAirportCard = () => {
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
+            <button type="button" class="hide add-button btn btn-outline-secondary">Add</button>
+            <button type="button" class="hide edit-button btn btn-outline-warning">Edit</button>
+            <button type="button" class="hide delete-button btn btn-outline-danger">Delete</button>
           </div>
         </div>
         `;
