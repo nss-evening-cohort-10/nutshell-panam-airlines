@@ -1,10 +1,9 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import login from '../Auth/auth';
 
+const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
-const loginButton = $('##google-auth');
 
 const attachEvents = () => {
   logoutButton.click((e) => {
@@ -15,8 +14,9 @@ const attachEvents = () => {
   });
   loginButton.click((e) => {
     e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
       .then(() => {
-        login.signMeIn();
       }).catch((err) => console.error('you logged out', err));
   });
 };
