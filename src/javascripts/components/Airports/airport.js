@@ -1,10 +1,11 @@
-import getAllAirports from '../../helpers/data/airportsData';
+import './airport.scss';
+import airportsData from '../../helpers/data/airportsData';
 import utilities from '../../helpers/utilities';
 
 const createAirportCard = () => {
-  getAllAirports.getAirports()
+  airportsData.getAllAirports()
     .then((airports) => {
-      let domString = '';
+      let domString = '<h1 class="airports-title">Airports</h1>';
       domString += '<div id="airports" class="d-flex flex-wrap">';
       airports.forEach((airport) => {
         domString += `
