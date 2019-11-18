@@ -43,44 +43,8 @@ const addNewPlane = (e) => {
 };
 
 const newPlaneInfo = (plane) => {
-  const domString = `<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Plane Maintenance</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group${plane.id}">
-          <label for="planeNum" class="col-form-label">Plane No.</label>
-          <input type="text" class="form-control" id="${plane.planeNum}">
-        </div>
-        <div class="form-group">
-          <label for="airport" class="col-form-label">Airport:</label>
-          <textarea class="form-control" id="${plane.airport}"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="team" class="col-form-label">Team:</label>
-          <textarea class="form-control" id="${plane.team}"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="modelType" class="col-form-label">Model/Type:</label>
-          <textarea class="form-control" id="${plane.modelType}"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="capacity" class="col-form-label">Capacity:</label>
-          <textarea class="form-control" id="${plane.capacity}"></textarea>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button"  id="save" class="btn btn-primary">Save</button>
-    </div>
-  </div>
-</div>`;
+  let domString = '';
+  domString += PlanesBuilder.PlaneModal(plane);
   utilities.printToDom('exampleModal', domString);
   $('#save').click(addNewPlane);
 };

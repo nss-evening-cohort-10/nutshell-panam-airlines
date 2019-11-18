@@ -2,7 +2,7 @@ import './planesBuilder.scss';
 
 const makeAPlane = (plane) => {
   const domString = `
-  <div class="card plane col-3">
+  <div class="card col-3">
   <div class="card-body text-center" ${plane.id}>
     <h5 class="card-title">Plane Number: ${plane.planeNum}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${plane.team}</h6>
@@ -45,7 +45,7 @@ const PlaneModal = (plane) => {
           </div>
           <div class="form-group">
             <label for="capacity" class="col-form-label">Capacity:</label>
-            <textarea class="form-control" id="${plane.capacity}">${plane.capacity}</textarea>
+            <textarea class="form-control" id="${plane.capacity}"></textarea>
           </div>
         </form>
       </div>
