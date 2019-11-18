@@ -16,7 +16,7 @@ const makeAPlane = (plane) => {
   return domString;
 };
 
-const PlaneModal = (plane) => {
+const PlaneModal = () => {
   const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,25 +27,25 @@ const PlaneModal = (plane) => {
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group${plane.id}">
+          <div class="form-group>
             <label for="planeNum" class="col-form-label">Plane No.</label>
-            <input type="text" class="form-control" id="${plane.planeNum}">
+            <input type="text" class="form-control" id="planeNum">
           </div>
           <div class="form-group">
             <label for="airport" class="col-form-label">Airport:</label>
-            <textarea class="form-control" id="${plane.airport}"></textarea>
+            <textarea class="form-control" id="airport"></textarea>
           </div>
           <div class="form-group">
             <label for="team" class="col-form-label">Team:</label>
-            <textarea class="form-control" id="${plane.team}"></textarea>
+            <textarea class="form-control" id="team"></textarea>
           </div>
           <div class="form-group">
             <label for="modelType" class="col-form-label">Model/Type:</label>
-            <textarea class="form-control" id="${plane.modelType}"></textarea>
+            <textarea class="form-control" id="modelType"></textarea>
           </div>
           <div class="form-group">
             <label for="capacity" class="col-form-label">Capacity:</label>
-            <textarea class="form-control" id="${plane.capacity}"></textarea>
+            <textarea class="form-control" id="capacity"></textarea>
           </div>
         </form>
       </div>

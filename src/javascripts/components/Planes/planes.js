@@ -3,10 +3,12 @@ import './planes.scss';
 import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
 import utilities from '../../helpers/utilities';
+import authData from '../../helpers/data/authData';
 
 const displayPlanes = () => {
   $('#planes-link').on('click', () => {
     $('#planes').show();
+    authData.checkLoginStatus();
   });
 };
 
@@ -23,7 +25,6 @@ const deleteAPlane = (e) => {
 
 const addNewPlane = (e) => {
   e.stopImmediatePropagation();
-  const { planeId } = e.target.id;
   const newPlane = {
     // id: $('#plane-id').val(),
     team: $('#team').val(),
@@ -31,13 +32,13 @@ const addNewPlane = (e) => {
     planeNum: $('#planeNum').val(),
     modelType: $('#modelType').val(),
     capacity: $('#capacity').val(),
-    planeId,
   };
+  console.log(newPlane);
   planesData.addNewPlane(newPlane)
     .then(() => {
       $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
-      buildPlanes(planeId);
+      buildPlanes();
     })
     .catch((error) => console.error(error));
 };
