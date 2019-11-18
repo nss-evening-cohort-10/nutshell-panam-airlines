@@ -15,6 +15,17 @@ const hideAirports = () => {
   });
 };
 
+const deleteAirport = (e) => {
+  e.preventDefault();
+  const airportId = $(e.target).attr('id');
+  airportsData.removeAirport(airportId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      createAirportCard();
+    })
+    .catch((error) => console.error(error));
+};
+
 const createAirportCard = () => {
   airportsData.getAllAirports()
     .then((airports) => {
@@ -29,7 +40,7 @@ const createAirportCard = () => {
             <p class="card-text">${airport.location}</p>
             <button type="button" class="hide add-button btn btn-outline-secondary">Add</button>
             <button type="button" class="hide edit-button btn btn-outline-warning">Edit</button>
-            <button type="button" class="hide delete-button btn btn-outline-danger">Delete</button>
+            <button type="button" class="hide delete-button btn btn-outline-danger" id="${airport.id}">Delete</button>
           </div>
         </div>
         `;
@@ -40,4 +51,9 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createAirportCard, displayAirports, hideAirports };
+export default {
+  createAirportCard,
+  displayAirports,
+  hideAirports,
+  deleteAirport,
+};
