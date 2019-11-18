@@ -9,6 +9,12 @@ const displayAirports = () => {
   });
 };
 
+const hideAirports = () => {
+  $('.non-crew').on('click', () => {
+    $('#airports').hide();
+  });
+};
+
 const createAirportCard = () => {
   airportsData.getAllAirports()
     .then((airports) => {
@@ -16,8 +22,8 @@ const createAirportCard = () => {
       domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
       airports.forEach((airport) => {
         domString += `
-        <div id="${airport.id}" class="card crew-card" style="width: 18rem;">
-          <img src="${airport.imageUrl}" class="card-img-top crew-image" alt="${airport.name}">
+        <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
+          <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
@@ -31,4 +37,4 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createAirportCard, displayAirports };
+export default { createAirportCard, displayAirports, hideAirports };

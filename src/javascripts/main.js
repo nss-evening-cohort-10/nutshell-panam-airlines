@@ -11,6 +11,7 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   airport.createAirportCard();
   airport.displayAirports();
+  airport.hideAirports();
   crew.createCrewCard();
   crew.displayCrew();
   crew.hideCrew();
