@@ -1,4 +1,9 @@
 import 'bootstrap';
 import '../styles/main.scss';
+import crew from './components/crew/crew';
 
-console.error('hi');
+const init = () => {
+  crew.createCrewCard();
+};
+
+init();
