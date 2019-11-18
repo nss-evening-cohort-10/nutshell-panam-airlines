@@ -1,0 +1,58 @@
+{
+  "food1": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food2": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food3": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food4": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food5": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food6": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food7": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  },
+  "food8": {
+    "name": "",
+    "calsPerServing": 150,
+    "imageURL": "",
+    "price": 500,
+    "menuCategory": ""
+  }
+}
