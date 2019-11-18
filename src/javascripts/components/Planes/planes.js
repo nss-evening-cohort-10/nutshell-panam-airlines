@@ -4,10 +4,10 @@ import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
 import utilities from '../../helpers/utilities';
 
-const planesDiv = $('#planes');
-
-const showPlanesDiv = () => {
-  planesDiv.removeClass('hide');
+const displayPlanes = () => {
+  $('#planes-link').on('click', () => {
+    $('#planes').show();
+  });
 };
 
 const deleteAPlane = (e) => {
@@ -21,10 +21,15 @@ const deleteAPlane = (e) => {
     .catch((error) => console.log(error));
 };
 
+const addNewPlane = (e) => {
+  
+}
+
 const buildPlanes = (planeId) => {
   planesData.getPlanesByPlaneId(planeId)
     .then((planes) => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
+      domString += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
       domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {
         domString += PlanesBuilder.makeAPlane(plane);
@@ -32,9 +37,9 @@ const buildPlanes = (planeId) => {
       domString += '</div>';
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
-      $('#show-planes').on('click', showPlanesDiv);
     })
     .catch((error) => console.error(error));
 };
 
-export default { buildPlanes };
+
+export default { buildPlanes, displayPlanes };

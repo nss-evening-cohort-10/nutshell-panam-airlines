@@ -38,5 +38,45 @@
     "planeNum": "SW312",
     "modelType": "Boeing 787",
     "capacity": 250
+  },
+  "plane6": {
+    "id": "plane6",
+    "team": "Team-C",
+    "airport": "MEM",
+    "planeNum": "SW901",
+    "modelType": "Boeing 737",
+    "capacity": 200
+  },
+  "plane7": {
+    "id": "plane7",
+    "team": "Team-A",
+    "airport": "PHX",
+    "planeNum": "PW808",
+    "modelType": "Boeing 747",
+    "capacity": 400
+  },
+  "plane8": {
+    "id": "plane8",
+    "team": "Team-B",
+    "airport": "CHI",
+    "planeNum": "NW636",
+    "modelType": "Boeing 777",
+    "capacity": 300
+  },
+  "plane9": {
+    "id": "plane9",
+    "team": "Team-A",
+    "airport": "ORL",
+    "planeNum": "SE101",
+    "modelType": "Boeing 747",
+    "capacity": 350
+  },
+  "plane10": {
+    "id": "plane10",
+    "team": "Team-B",
+    "airport": "MIA",
+    "planeNum": "SW201",
+    "modelType": "Boeing 747",
+    "capacity": 350
   }
 }

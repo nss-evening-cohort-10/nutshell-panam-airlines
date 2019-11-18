@@ -16,5 +16,6 @@ const init = () => {
   crew.hideCrew();
   planesData.getPlanesByPlaneId();
   planes.buildPlanes();
+  planes.displayPlanes();
 };
 init();
