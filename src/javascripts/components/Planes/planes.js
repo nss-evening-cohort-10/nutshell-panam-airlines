@@ -4,6 +4,11 @@ import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
 import utilities from '../../helpers/utilities';
 
+const planesDiv = $('#planes');
+
+const showPlanesDiv = () => {
+  planesDiv.removeClass('hide');
+};
 
 const deleteAPlane = (e) => {
   e.preventDefault();
@@ -27,7 +32,7 @@ const buildPlanes = (planeId) => {
       domString += '</div>';
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
-      // $('#show-planes').on('click', showPlanes);
+      $('#show-planes').on('click', showPlanesDiv);
     })
     .catch((error) => console.error(error));
 };
