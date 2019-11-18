@@ -27,6 +27,7 @@ const buildPlanes = (planeId) => {
       domString += '</div>';
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
+      // $('#show-planes').on('click', showPlanes);
     })
     .catch((error) => console.error(error));
 };
