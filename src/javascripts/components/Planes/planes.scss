@@ -1,11 +1,15 @@
 .card{
   margin: 25px;
   display: flex;  
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .delete, .edit {
   margin: 5px;
+}
+
+.title{
+  text-align: center;
 }

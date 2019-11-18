@@ -24,7 +24,7 @@ const deleteAPlane = (e) => {
 const buildPlanes = (planeId) => {
   planesData.getPlanesByPlaneId(planeId)
     .then((planes) => {
-      let domString = '<h1>Fleet Inventory & Maintenance</h1>';
+      let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {
         domString += PlanesBuilder.makeAPlane(plane);
