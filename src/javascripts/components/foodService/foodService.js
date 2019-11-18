@@ -22,7 +22,7 @@ const createFoodCards = () => {
     .then((foods) => {
       foods.forEach((food) => {
         const user = firebase.auth().currentUser;
-        console.log(user);
+        console.error(user);
         if (user != null) {
           domString += `
           <div class="card foodCard card-body text-center" style=" width: 25em; height: 100%; margin: 2em;">
