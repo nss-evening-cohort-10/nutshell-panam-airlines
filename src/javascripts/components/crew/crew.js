@@ -10,6 +10,12 @@ const displayCrew = () => {
   });
 };
 
+const hideCrew = () => {
+  $('.non-crew').on('click', () => {
+    $('#crew').hide();
+  });
+};
+
 const createCrewCard = () => {
   crewData.getAllCrewMembers()
     .then((crews) => {
@@ -33,4 +39,4 @@ const createCrewCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createCrewCard, displayCrew };
+export default { createCrewCard, displayCrew, hideCrew };

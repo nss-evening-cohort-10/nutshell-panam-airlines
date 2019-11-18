@@ -10,6 +10,7 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   crew.createCrewCard();
   crew.displayCrew();
+  crew.hideCrew();
 };
 
 init();
