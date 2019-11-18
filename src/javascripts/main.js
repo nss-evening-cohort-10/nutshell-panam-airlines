@@ -17,8 +17,6 @@ const init = () => {
   navbar.attachEvents();
   airport.createAirportCard();
   crew.createCrewCard();
-  crew.displayCrew();
-  crew.hideCrew();
   planesData.getPlanesByPlaneId();
   planes.buildPlanes();
   planes.displayPlanes();
