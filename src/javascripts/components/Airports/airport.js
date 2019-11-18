@@ -5,13 +5,11 @@ import utilities from '../../helpers/utilities';
 
 const displayAirports = () => {
   $('#airports-link').on('click', () => {
+    $('#home').hide();
     $('#airports').show();
-  });
-};
-
-const hideAirports = () => {
-  $('.non-crew').on('click', () => {
-    $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#plane').hide();
   });
 };
 
@@ -54,6 +52,5 @@ const createAirportCard = () => {
 export default {
   createAirportCard,
   displayAirports,
-  hideAirports,
   deleteAirport,
 };
