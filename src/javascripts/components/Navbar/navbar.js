@@ -11,14 +11,14 @@ const attachEvents = () => {
     firebase.auth().signOut()
       .then(() => {
       }).catch((err) => console.error('you still logged in', err));
-  });
+  })
   loginButton.click((e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider);
       .then(() => {
       }).catch((err) => console.error('you logged out', err));
-  });
+  })
 };
 
 export default { attachEvents };
