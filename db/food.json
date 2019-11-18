@@ -9,7 +9,7 @@
   "food2": {
     "name": "Burger",
     "calsPerServing": 890,
-    "imageURL": "https://dam.farmjournal.com/m/35caac35963087af/webimage-C2A5CB73-635A-49F3-949079D360AC942A.jpg",
+    "imageURL": "https://www.howsweeteats.com/wp-content/uploads/2018/06/veg-burgers-I-howsweeteats.com-15.jpg",
     "price": 1100,
     "menuCategory": "Lunch/Dinner"
   },
@@ -44,7 +44,7 @@
   "food7": {
     "name": "Truffle Mac",
     "calsPerServing": 1500,
-    "imageURL": "https://foodchannelcom.files.wordpress.com/2017/06/dsc_2678.jpg?w=362&h=339&crop=1",
+    "imageURL": "https://theviewfromgreatisland.com/wp-content/uploads/2019/01/truffle-macaroni-and-cheese-3994-January-06-2019.jpg",
     "price": 1600,
     "menuCategory": "Lunch/Dinner"
   },
