@@ -4,6 +4,7 @@ import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
 import utilities from '../../helpers/utilities';
 
+
 const deleteAPlane = (e) => {
   e.preventDefault();
   const { planeId } = e.target.id;
