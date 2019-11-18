@@ -8,6 +8,39 @@
 </head>
 <body>
 
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c69b1;">
+        <a class="navbar-brand" href="#">
+            <img id="panam-nav-logo" src="https://www.cmqrailway.com/wp-content/uploads/2017/05/logo-panam.png" alt="">
+        </a>
+        <h1 style="color:white;">Flight Deck Portal</h1>
+        <!-- What is this button? -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <button class="btn btn-default" id="auth">
+                  <img src="https://raw.githubusercontent.com/react-native-community/react-native-google-signin/HEAD/img/signin-button.png" width="200"/>
+              </button>
+              <div class="btn-group d-flex">
+                <button class="btn btn-outline-danger hide" id="navbar-button-logout" >Logout</button>
+                <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Flight Info
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Crew</a>
+                  <a class="dropdown-item" href="#">Planes</a>
+                  <a class="dropdown-item" href="#">Airports</a>
+                  <a class="dropdown-item" href="#">Food Service</a>
+                </div>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
 <!-- This is the div that you will target and print to, for whatever printToDom function you use to create your modal contents -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
