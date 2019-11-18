@@ -56,4 +56,22 @@ const createFoodCards = () => {
     .catch((error) => console.error(error));
 };
 
+// const addNewFood = (e) => {
+//   e.stopImmediatePropagation();
+//   const newFood = {
+//     name: $('#modal-name').val(),
+//     imageURL: $('#modal-image-url').val(),
+//     price: $('#modal-price').val(),
+//     category: $('#modal-category').val(),
+//     calories: $('#modal-calories').val()
+//   };
+//   foodData.addNewFood(newFood)
+//     .then(() => {
+//       $('#exampleModal').modal('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       createFoodCards();
+//     })
+//     .catch((error) => console.error(error));
+// };
+
 export default { createFoodCards, displayFood };
