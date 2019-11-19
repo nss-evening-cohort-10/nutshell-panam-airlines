@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getPlanesByPlaneId = () => new Promise((resolve, reject) => {
+const getPlanes = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/planes.json`)
     .then((response) => {
       const daPlanes = response.data;
@@ -21,4 +21,4 @@ const deletePlane = (planeId) => axios.delete(`${baseUrl}/planes/${planeId}.json
 
 const addNewPlane = (newPlane) => axios.post(`${baseUrl}/planes.json`, newPlane);
 
-export default { getPlanesByPlaneId, deletePlane, addNewPlane };
+export default { getPlanes, deletePlane, addNewPlane };

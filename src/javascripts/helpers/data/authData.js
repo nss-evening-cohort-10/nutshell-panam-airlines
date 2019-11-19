@@ -2,21 +2,11 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import food from '../../components/foodService/foodService';
+import planes from '../../components/Planes/planes';
+
 
 const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
-
-// // make for everyone
-// const hideCardFunctionality = () => {
-//   const deleteBtn = $('.delete');
-//   const editBtn = $('.edit');
-//   for (let i = 0; i < deleteBtn.length; i += 1) {
-//     $('.delete').addClass('hide');
-//   }
-//   for (let i = 0; i < editBtn.length; i += 1) {
-//     $('.edit').addClass('hide');
-//   }
-// };
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -25,11 +15,13 @@ const checkLoginStatus = () => {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
       food.createFoodCards();
+      planes.buildPlanes();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
       food.createFoodCards();
+      planes.buildPlanes();
     }
   });
 };

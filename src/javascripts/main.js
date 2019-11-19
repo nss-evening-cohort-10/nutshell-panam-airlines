@@ -6,7 +6,6 @@ import airport from './components/Airports/airport';
 import crew from './components/crew/crew';
 
 import 'bootstrap';
-import planesData from './helpers/data/planesData';
 import planes from './components/Planes/planes';
 import '../styles/main.scss';
 
@@ -17,7 +16,6 @@ const init = () => {
   navbar.attachEvents();
   airport.createAirportCard();
   crew.createCrewCard();
-  planesData.getPlanesByPlaneId();
   planes.buildPlanes();
   planes.displayPlanes();
 };

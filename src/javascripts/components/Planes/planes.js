@@ -3,12 +3,11 @@ import './planes.scss';
 import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
 import utilities from '../../helpers/utilities';
-import authData from '../../helpers/data/authData';
+
 
 const displayPlanes = () => {
   $('#planes-link').on('click', () => {
     $('#planes').show();
-    authData.checkLoginStatus();
   });
 };
 
@@ -26,14 +25,12 @@ const deleteAPlane = (e) => {
 const addNewPlane = (e) => {
   e.stopImmediatePropagation();
   const newPlane = {
-    // id: $('#plane-id').val(),
     team: $('#team').val(),
     airport: $('#airport').val(),
     planeNum: $('#planeNum').val(),
     modelType: $('#modelType').val(),
     capacity: $('#capacity').val(),
   };
-  console.log(newPlane);
   planesData.addNewPlane(newPlane)
     .then(() => {
       $('#exampleModal').modal('hide');
@@ -50,8 +47,8 @@ const newPlaneInfo = (plane) => {
   $('#save').click(addNewPlane);
 };
 
-const buildPlanes = (planeId) => {
-  planesData.getPlanesByPlaneId(planeId)
+const buildPlanes = () => {
+  planesData.getPlanes()
     .then((planes) => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
