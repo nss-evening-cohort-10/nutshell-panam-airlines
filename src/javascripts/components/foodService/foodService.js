@@ -31,6 +31,8 @@ const createFoodCards = () => {
       utilities.printToDom('foodModule', domString);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#add-new-food', newFoodDetails);
+      // eslint-disable-next-line no-use-before-define
+      $(document.body).on('click', '.delete-food', deleteFood);
     })
     .catch((error) => console.error(error));
 };
@@ -58,6 +60,16 @@ const newFoodDetails = (food) => {
   domString += foodCardBuilder.foodModal(food);
   utilities.printToDom('exampleModal', domString);
   $('#submit').click(addNewFood);
+};
+
+const deleteFood = (e) => {
+  e.preventDefault();
+  foodData.deleteFood(e.target.id)
+    .then(() => {
+    // eslint-disable-next-line no-use-before-define
+      createFoodCards();
+    })
+    .catch((error) => console.error(error));
 };
 
 export default { createFoodCards, displayFood };
