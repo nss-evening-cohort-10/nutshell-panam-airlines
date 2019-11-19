@@ -17,11 +17,11 @@ const displayAirports = () => {
 
 const deleteAirport = (e) => {
   e.preventDefault();
-  const airportId = $(e.target.id);
-  airportsData.removeAirport(airportId)
+  const { airportId } = e.target.id;
+  airportsData.removeAirport(e.target.id)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      createAirportCard();
+      createAirportCard(airportId);
     })
     .catch((error) => console.error(error));
 };
@@ -59,12 +59,9 @@ const createAirportCard = () => {
       });
       domString += '</div>';
       utilities.printToDom('airports', domString);
+      $('.delete-button').on('click', deleteAirport);
     })
     .catch((error) => console.error(error));
 };
 
-export default {
-  createAirportCard,
-  displayAirports,
-  deleteAirport,
-};
+export default { createAirportCard, displayAirports };
