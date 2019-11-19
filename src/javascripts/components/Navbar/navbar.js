@@ -5,6 +5,7 @@ import airport from '../Airports/airport';
 import crew from '../crew/crew';
 import food from '../foodService/foodService';
 import auth from '../Auth/auth';
+import planes from '../Planes/planes';
 
 const displayHome = () => {
   $('#home-link').on('click', () => {
@@ -12,7 +13,7 @@ const displayHome = () => {
     $('#airports').hide();
     $('#crew').hide();
     $('#foodModule').hide();
-    $('#plane').hide();
+    $('#planes').hide();
   });
 };
 
@@ -37,6 +38,7 @@ const attachDropdownEvents = () => {
   airport.displayAirports();
   crew.displayCrew();
   food.displayFood();
+  planes.displayPlanes();
 };
 
 export default { attachDropdownEvents, attachEvents };
