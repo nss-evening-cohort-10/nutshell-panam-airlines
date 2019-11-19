@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import firebase from 'firebase';
 import './planes.scss';
 import planesData from '../../helpers/data/planesData';
 import PlanesBuilder from '../PlanesBuilder/planesBuilder';
@@ -51,7 +52,10 @@ const buildPlanes = () => {
   planesData.getPlanes()
     .then((planes) => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
-      domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
+      const user = firebase.auth().currentUser;
+      if (user != null) {
+        domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
+      }
       domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {
         domString += PlanesBuilder.makeAPlane(plane);
