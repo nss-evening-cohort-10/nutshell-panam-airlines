@@ -6,8 +6,8 @@ const singleFoodCard = (food) => {
   const user = firebase.auth().currentUser;
   if (user != null) {
     domString += `
-          <div class="card foodCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-             <button class="btn delete-foodItem"  id="${food.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
+          <div id="${food.id}" class="card foodCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
+             <button class="btn delete-button delete-food"  id="${food.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
              <img src="${food.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
              <br>
              <h5 class="card-title" id="food">${food.name}</h5>
@@ -21,7 +21,7 @@ const singleFoodCard = (food) => {
           </div>`;
   } else {
     domString += `
-        <div class="card foodCard card-body text-center" style=" width: 25em; max-width: 150px; height: 100%; margin: 2em;">
+        <div id="${food.id}" class="card foodCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
            <img src="${food.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
            <br>
            <h5 class="card-title" id="food">${food.name}</h5>
