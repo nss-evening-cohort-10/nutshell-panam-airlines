@@ -32,6 +32,7 @@ const addAirport = (e) => {
     name: $('#name').val(),
     imageUrl: $('#image').val(),
     location: $('#location').val(),
+    isInernational: $('#isInernational').val(),
   };
   airportsData.addAirport(newAirport)
     .then(() => {
@@ -56,7 +57,7 @@ const createAirportCard = () => {
     .then((airports) => {
       let domString = '<h1 class="airports-title text-center">Airports</h1>';
       if (user != null) {
-        domString += '<button type="button" class="add-button btn btn-info">Add Airport</button>';
+        domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
       }
       domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
       airports.forEach((airport) => {
@@ -92,4 +93,42 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createAirportCard, displayAirports };
+const AirportModal = () => {
+  const domString = `<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Airport</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group>
+            <label for="name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="imageUrl" class="col-form-label">Image Url:</label>
+            <textarea class="form-control" id="image"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="location" class="col-form-label">Location:</label>
+            <textarea class="form-control" id="location"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="isInernational" class="col-form-label">International:</label>
+            <input type="checkbox" id="isInternational" name="isInternational" value="true" checked> True
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="save" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>`;
+  return domString;
+};
+
+export default { createAirportCard, displayAirports, AirportModal };

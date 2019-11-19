@@ -17,8 +17,8 @@ const getAllAirports = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const addNewAirport = (newAirport) => axios.post(`${baseUrl}/airports.json`, newAirport);
-
 const removeAirport = (airportId) => axios.delete(`${baseUrl}/airports/${airportId}.json`);
+
+const addNewAirport = (newAirport) => axios.post(`${baseUrl}/airports.json`, newAirport);
 
 export default { getAllAirports, removeAirport, addNewAirport };
