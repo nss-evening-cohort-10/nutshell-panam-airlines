@@ -46,9 +46,9 @@ const addAirport = (e) => {
 const newAirportInfo = (airport) => {
   let domString = '';
   // eslint-disable-next-line no-use-before-define
-  domString += createAirportCard.AirportModal(airport);
+  domString += airport.AirportModal(airport);
   utilities.printToDom('exampleModal', domString);
-  $('#save-button').on('click', addAirport);
+  $('.save').on('click', addAirport);
 };
 
 const createAirportCard = () => {
@@ -105,11 +105,11 @@ const AirportModal = () => {
       <div class="modal-body">
         <form>
           <div class="form-group>
-            <label for="name" class="col-form-label">ImageUrl:</label>
+            <label for="image" class="col-form-label">ImageUrl:</label>
             <input type="text" class="form-control" id="image">
           </div>
           <div class="form-group">
-            <label for="imageUrl" class="col-form-label">Name:</label>
+            <label for="name" class="col-form-label">Name:</label>
             <textarea class="form-control" id="name"></textarea>
           </div>
           <div class="form-group">
@@ -117,14 +117,14 @@ const AirportModal = () => {
             <textarea class="form-control" id="location"></textarea>
           </div>
           <div class="form-group">
-            <label for="isInernational" class="col-form-label">International:</label>
+            <label for="isInternational" class="col-form-label">International:</label>
             <input type="checkbox" id="isInternational" name="isInternational" value="true" checked> True
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="save" class="btn btn-primary">Save</button>
+        <button type="button" class="save" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>`;
