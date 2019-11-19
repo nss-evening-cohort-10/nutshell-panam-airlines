@@ -15,6 +15,17 @@ const displayAirports = () => {
   });
 };
 
+const deleteAirport = (e) => {
+  e.preventDefault();
+  const { airportId } = e.target.id;
+  airportsData.removeAirport(e.target.id)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      createAirportCard(airportId);
+    })
+    .catch((error) => console.error(error));
+};
+
 const createAirportCard = () => {
   airportsData.getAllAirports()
     .then((airports) => {
@@ -31,7 +42,7 @@ const createAirportCard = () => {
             <p class="card-text">${airport.location}</p>
             <button type="button" class="add-button btn btn-outline-secondary">Add</button>
             <button type="button" class="edit-button btn btn-outline-warning">Edit</button>
-            <button type="button" class="delete-button btn btn-outline-danger">Delete</button>
+            <button type="button" class="delete-button btn btn-outline-danger" id=${airport.id}>Delete</button>
           </div>
         </div>
         `;
@@ -49,6 +60,7 @@ const createAirportCard = () => {
       });
       domString += '</div>';
       utilities.printToDom('airports', domString);
+      $('.delete-button').on('click', deleteAirport);
     })
     .catch((error) => console.error(error));
 };
