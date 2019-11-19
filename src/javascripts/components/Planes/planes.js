@@ -9,6 +9,10 @@ import utilities from '../../helpers/utilities';
 const displayPlanes = () => {
   $('#planes-link').on('click', () => {
     $('#planes').show();
+    $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#home').hide();
   });
 };
 

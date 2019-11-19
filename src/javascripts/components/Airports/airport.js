@@ -11,7 +11,7 @@ const displayAirports = () => {
     $('#airports').show();
     $('#crew').hide();
     $('#foodModule').hide();
-    $('#plane').hide();
+    $('#planes').hide();
   });
 };
 

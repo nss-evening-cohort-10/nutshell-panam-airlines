@@ -10,7 +10,7 @@ const displayCrew = () => {
     $('#airports').hide();
     $('#home').hide();
     $('#foodModule').hide();
-    $('#plane').hide();
+    $('#planes').hide();
   });
 };
 
