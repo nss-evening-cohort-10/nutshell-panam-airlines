@@ -45,14 +45,19 @@ const addNewPlane = (e) => {
     .catch((error) => console.error(error));
 };
 
-// const updateAPlane = (e) => {
-//   console.log(e);
-//   e.stopImmediatePropagation();
-//   planesData.getPlaneById();
-//    .then((plane) => {
+const updateAPlane = () => {
+  // e.stopImmediatePropagation();
+  // planesData.deletePlane(e.target.id);
+  // eslint-disable-next-line no-use-before-define
+  getPlaneById();
+};
 
-//   }
-// };
+const getPlaneById = (planeId) => {
+  planesData.getPlaneById(planeId);
+    .then((plane) => {
+      console.log(plane);
+    });
+};
 
 const newPlaneInfo = (plane) => {
   let domString = '';
@@ -67,7 +72,6 @@ const buildPlanes = () => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       const user = firebase.auth().currentUser;
       if (user != null) {
-        // eslint-disable-next-line max-len
         domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px;">Add Plane</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
@@ -78,7 +82,7 @@ const buildPlanes = () => {
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
       $('#add-new-plane').click(newPlaneInfo);
-      // $('#planes').on('click', '.edit', updateAPlane);
+      $('#planes').on('click', '.edit', updateAPlane);
     })
     .catch((error) => console.error(error));
 };

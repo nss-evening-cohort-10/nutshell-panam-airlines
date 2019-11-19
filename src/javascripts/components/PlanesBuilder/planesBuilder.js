@@ -43,15 +43,15 @@ const PlaneModal = (plane) => {
           </div>
           <div class="form-group">
             <label for="team" class="col-form-label">Team:</label>
-            <textarea class="form-control" id="team"></textarea>
+            <textarea class="form-control" id="team" value="${plane.team ? plane.team : ''}"></textarea>
           </div>
           <div class="form-group">
             <label for="modelType" class="col-form-label">Model/Type:</label>
-            <textarea class="form-control" id="modelType"></textarea>
+            <textarea class="form-control" id="modelType" value="${plane.modelType ? plane.modelType : ''}"></textarea>
           </div>
           <div class="form-group">
             <label for="capacity" class="col-form-label">Capacity:</label>
-            <textarea class="form-control" id="capacity"></textarea>
+            <textarea class="form-control" id="capacity" value="${plane.capacity ? plane.capacity : ''}"></textarea>
           </div>
         </form>
       </div>
