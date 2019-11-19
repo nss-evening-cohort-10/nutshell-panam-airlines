@@ -11,7 +11,7 @@ const displayFood = () => {
     $('#home').hide();
     $('#crew').hide();
     $('#airports').hide();
-    $('#plane').hide();
+    $('#planes').hide();
   });
 };
 
