@@ -1,9 +1,9 @@
 import './foodService.scss';
 import $ from 'jquery';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import foodData from '../../helpers/data/foodData';
+import foodCardBuilder from '../foodCardBuilder/foodCardBuilder';
 
 const displayFood = () => {
   $('#food-link').on('click', () => {
@@ -17,42 +17,47 @@ const displayFood = () => {
 
 const createFoodCards = () => {
   let domString = '<h1 class="text-center">Food Service</h1>';
+  const user = firebase.auth().currentUser;
+  if (user != null) {
+    domString += '<div class="text-center"><button type="button" id="add-new-food" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Food</button></div>';
+  }
   domString += '<div id="foodDivs" class="d-flex flex-wrap">';
   foodData.getFood()
     .then((foods) => {
       foods.forEach((food) => {
-        const user = firebase.auth().currentUser;
-        if (user != null) {
-          domString += `
-          <div class="card foodCard card-body text-center" style=" width: 25em; height: 100%; margin: 2em;">
-             <button class="btn delete-foodItem"  id="${food.id}" style="margin-right:0; margin-left: auto; width: 2em;">X</button>
-             <img src="${food.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
-             <br>
-             <h5 class="card-title" id="food">${food.name}</h5>
-              <p>${food.price}</p>
-              <p>${food.calsPerServing} Cals</p>
-              <p>Menu Category: ${food.menuCategory}</p>
-              <button type="button" class="btn btn-success" data-toggle="modal" data- 
-               target="#exampleModal">
-                  Edit
-               </button>
-          </div>`;
-        } else {
-          domString += `
-        <div class="card foodCard card-body text-center" id="${food.id}" style=" width: 25em; height: 100%; margin: 2em;">
-           <img src="${food.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
-           <br>
-           <h5 class="card-title" id="food">${food.name}</h5>
-            <p>${food.price}</p>
-            <p>${food.calsPerServing} Cals</p>
-            <p>Menu Category: ${food.menuCategory}</p>
-        </div>`;
-        }
+        domString += foodCardBuilder.singleFoodCard(food);
       });
       domString += '</div>';
       utilities.printToDom('foodModule', domString);
+      // eslint-disable-next-line no-use-before-define
+      $(document.body).on('click', '#add-new-food', newFoodDetails);
     })
     .catch((error) => console.error(error));
+};
+
+const addNewFood = (e) => {
+  e.stopImmediatePropagation();
+  const newFood = {
+    name: $('#name').val(),
+    calsPerServing: $('#calsPerServing').val(),
+    imageURL: $('#imageURL').val(),
+    price: $('#price').val(),
+    menuCategory: $('#menuCategory').val(),
+  };
+  foodData.addNewFood(newFood)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      createFoodCards();
+    })
+    .catch((error) => console.error(error));
+};
+
+const newFoodDetails = (food) => {
+  let domString = '';
+  domString += foodCardBuilder.foodModal(food);
+  utilities.printToDom('exampleModal', domString);
+  $('#submit').click(addNewFood);
 };
 
 export default { createFoodCards, displayFood };
