@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import food from '../../components/foodService/foodService';
 import crew from '../../components/crew/crew';
+import airport from '../../components/Airports/airport';
 
 const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
@@ -15,12 +16,14 @@ const checkLoginStatus = () => {
       logoutButton.removeClass('hide');
       crew.createCrewCard();
       food.createFoodCards();
+      airport.createAirportCard();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
       crew.createCrewCard();
       food.createFoodCards();
+      airport.createAirportCard();
     }
   });
 };
