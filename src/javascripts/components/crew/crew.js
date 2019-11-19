@@ -5,15 +5,24 @@ import './crew.scss';
 import utilities from '../../helpers/utilities';
 import crewData from '../../helpers/data/crewData';
 
+const deleteCrewMember = (e) => {
+  e.preventDefault();
+  const { crewId } = e.target.id;
+  crewData.removeCrewMember(e.target.id)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      createCrewCard(crewId);
+    })
+    .catch((error) => console.error(error));
+};
+
 const displayCrew = () => {
   $('#crew-link').on('click', () => {
     $('#crew').show();
-  });
-};
-
-const hideCrew = () => {
-  $('.non-crew').on('click', () => {
-    $('#crew').hide();
+    $('#airports').hide();
+    $('#home').hide();
+    $('#foodModule').hide();
+    $('#plane').hide();
   });
 };
 
@@ -35,7 +44,9 @@ const createCrewCard = () => {
               <p class="card-text">${crew.title}</p>
               <p class="card-text">${crew.bio}</p>
             </div>
-            <button class="btn btn-success">Update Employee</button>
+            <div>
+              <button class="btn btn-primary crew-delete">Update Employee</button>
+            </div>
           </div>
           `;
         } else {
@@ -47,15 +58,15 @@ const createCrewCard = () => {
               <p class="card-text">${crew.title}</p>
               <p class="card-text">${crew.bio}</p>
             </div>
-            <button class="btn btn-success">Update Employee</button>
           </div>
           `;
         }
       });
       domString += '</div>';
       utilities.printToDom('crew', domString);
+      $('#crew').on('click', '.close-crewCard', deleteCrewMember);
     })
     .catch((error) => console.error(error));
 };
 
-export default { createCrewCard, displayCrew, hideCrew };
+export default { createCrewCard, displayCrew };

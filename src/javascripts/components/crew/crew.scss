@@ -4,10 +4,18 @@
 }
 
 .crew-card {
-  border: 2px solid black;
+  border: 5px solid black;
   margin: 15px;
 }
 
 .crew-heading {
   text-align: center;
+}
+
+.crew-delete {
+  margin: 0px 0px 10px 0px;
+}
+
+.close-crewCard {
+  background-color: white;
 }
