@@ -22,7 +22,7 @@ const makeAPlane = (plane) => {
   return domString;
 };
 
-const PlaneModal = () => {
+const PlaneModal = (plane) => {
   const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,7 +35,7 @@ const PlaneModal = () => {
         <form>
           <div class="form-group>
             <label for="planeNum" class="col-form-label">Plane No.</label>
-            <input type="text" class="form-control" id="planeNum">
+            <input type="text" class="form-control" id="planeNum" value="${plane.planeNum ? plane.planeNum : ''}">
           </div>
           <div class="form-group">
             <label for="airport" class="col-form-label">Airport:</label>

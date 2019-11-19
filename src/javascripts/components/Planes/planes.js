@@ -41,6 +41,18 @@ const addNewPlane = (e) => {
     .catch((error) => console.error(error));
 };
 
+const updateAPlane = (e) => {
+  e.stopImmediatePropagation();
+  planesData.deletePlane(e.target.id);
+  // let domString = '';
+  // domString +=
+  console.log(e.target.id);
+};
+
+const getPlaneById = () => {
+  
+}
+
 const newPlaneInfo = (plane) => {
   let domString = '';
   domString += PlanesBuilder.PlaneModal(plane);
@@ -64,6 +76,7 @@ const buildPlanes = () => {
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
       $('#add-new-plane').click(newPlaneInfo);
+      $('#planes').on('click', '.edit', updateAPlane);
     })
     .catch((error) => console.error(error));
 };
