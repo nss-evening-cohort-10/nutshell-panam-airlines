@@ -24,7 +24,7 @@ const createFoodCards = () => {
         const user = firebase.auth().currentUser;
         if (user != null) {
           domString += `
-          <div class="card foodCard card-body text-center" style=" width: 25em; height: 100%; margin: 2em;">
+          <div class="card foodCard card-body text-center" style=" width: 20em; height: 100%; margin: 2em;">
              <button class="btn delete-foodItem"  id="${food.id}" style="margin-right:0; margin-left: auto; width: 2em;">X</button>
              <img src="${food.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
              <br>
@@ -55,22 +55,22 @@ const createFoodCards = () => {
     .catch((error) => console.error(error));
 };
 
-// const addNewFood = (e) => {
-//   e.stopImmediatePropagation();
-//   const newFood = {
-//     name: $('#modal-name').val(),
-//     imageURL: $('#modal-image-url').val(),
-//     price: $('#modal-price').val(),
-//     category: $('#modal-category').val(),
-//     calories: $('#modal-calories').val()
-//   };
-//   foodData.addNewFood(newFood)
-//     .then(() => {
-//       $('#exampleModal').modal('hide');
-//       // eslint-disable-next-line no-use-before-define
-//       createFoodCards();
-//     })
-//     .catch((error) => console.error(error));
-// };
+const addNewFood = (e) => {
+  e.stopImmediatePropagation();
+  const newFood = {
+    name: $('#modal-name').val(),
+    imageURL: $('#modal-image-url').val(),
+    price: $('#modal-price').val(),
+    category: $('#modal-category').val(),
+    calories: $('#modal-calories').val()
+  };
+  foodData.addNewFood(newFood)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      createFoodCards();
+    })
+    .catch((error) => console.error(error));
+};
 
 export default { createFoodCards, displayFood };
