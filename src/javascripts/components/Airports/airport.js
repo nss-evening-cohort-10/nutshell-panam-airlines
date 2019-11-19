@@ -26,13 +26,40 @@ const deleteAirport = (e) => {
     .catch((error) => console.error(error));
 };
 
+const addAirport = (e) => {
+  e.stopImmediatePropagation();
+  const newAirport = {
+    name: $('#name').val(),
+    imageUrl: $('#image').val(),
+    location: $('#location').val(),
+  };
+  airportsData.addAirport(newAirport)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      createAirportCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+const newAirportInfo = (airport) => {
+  let domString = '';
+  // eslint-disable-next-line no-use-before-define
+  domString += createAirportCard.AirportModal(airport);
+  utilities.printToDom('exampleModal', domString);
+  $('#save-button').on('click', addAirport);
+};
+
 const createAirportCard = () => {
+  const user = firebase.auth().currentUser;
   airportsData.getAllAirports()
     .then((airports) => {
       let domString = '<h1 class="airports-title text-center">Airports</h1>';
+      if (user != null) {
+        domString += '<button type="button" class="add-button btn btn-info">Add Airport</button>';
+      }
       domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
       airports.forEach((airport) => {
-        const user = firebase.auth().currentUser;
         if (user != null) {
           domString += `
         <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
@@ -60,6 +87,7 @@ const createAirportCard = () => {
       domString += '</div>';
       utilities.printToDom('airports', domString);
       $('.delete-button').on('click', deleteAirport);
+      $('.add-button').on('click', newAirportInfo);
     })
     .catch((error) => console.error(error));
 };
