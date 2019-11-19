@@ -31,4 +31,13 @@ const getFoodByID = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getFood, getFoodByID };
+const addNewFood = (newFood) => axios.post(`${baseUrl}/food.json`, newFood);
+
+const deleteFood = (id) => axios.delete(`${baseUrl}/food/${id}.json`);
+
+export default {
+  getFood,
+  getFoodByID,
+  addNewFood,
+  deleteFood,
+};
