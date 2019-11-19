@@ -35,26 +35,27 @@ const createAirportCard = () => {
         const user = firebase.auth().currentUser;
         if (user != null) {
           domString += `
-          <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
+        <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
           <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
             <button type="button" class="add-button btn btn-outline-secondary">Add</button>
             <button type="button" class="edit-button btn btn-outline-warning">Edit</button>
-            <button type="button" class="delete-button btn btn-outline-danger" id="${airport.id}">Delete</button>
+            <button type="button" class="delete-button btn btn-outline-danger" id=${airport.id}>Delete</button>
           </div>
-          </div>
+        </div>
         `;
         } else {
           domString += `
-          <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
+        <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
           <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
           </div>
-          </div>`;
+        </div>
+        `;
         }
       });
       domString += '</div>';
