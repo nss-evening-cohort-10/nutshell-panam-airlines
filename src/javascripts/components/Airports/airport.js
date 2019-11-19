@@ -15,12 +15,6 @@ const displayAirports = () => {
   });
 };
 
-const hideAirports = () => {
-  $('.non-crew').on('click', () => {
-    $('#airports').hide();
-  });
-};
-
 const createAirportCard = () => {
   airportsData.getAllAirports()
     .then((airports) => {
@@ -59,4 +53,4 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createAirportCard, displayAirports, hideAirports };
+export default { createAirportCard, displayAirports };
