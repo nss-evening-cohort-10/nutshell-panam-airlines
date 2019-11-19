@@ -29,10 +29,10 @@ const deleteAirport = (e) => {
 const addAirport = (e) => {
   e.stopImmediatePropagation();
   const newAirport = {
-    name: $('#name').val(),
     imageUrl: $('#image').val(),
+    name: $('#name').val(),
     location: $('#location').val(),
-    isInernational: $('#isInernational').val(),
+    isInternational: $('#isInternational').val(),
   };
   airportsData.addAirport(newAirport)
     .then(() => {
@@ -105,12 +105,12 @@ const AirportModal = () => {
       <div class="modal-body">
         <form>
           <div class="form-group>
-            <label for="name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name">
+            <label for="name" class="col-form-label">ImageUrl:</label>
+            <input type="text" class="form-control" id="image">
           </div>
           <div class="form-group">
-            <label for="imageUrl" class="col-form-label">Image Url:</label>
-            <textarea class="form-control" id="image"></textarea>
+            <label for="imageUrl" class="col-form-label">Name:</label>
+            <textarea class="form-control" id="name"></textarea>
           </div>
           <div class="form-group">
             <label for="location" class="col-form-label">Location:</label>
