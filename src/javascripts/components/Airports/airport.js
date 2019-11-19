@@ -11,13 +11,7 @@ const displayAirports = () => {
     $('#airports').show();
     $('#crew').hide();
     $('#foodModule').hide();
-    $('#plane').hide();
-  });
-};
-
-const hideAirports = () => {
-  $('.non-crew').on('click', () => {
-    $('#airports').hide();
+    $('#planes').hide();
   });
 };
 
@@ -59,4 +53,4 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-export default { createAirportCard, displayAirports, hideAirports };
+export default { createAirportCard, displayAirports };

@@ -9,6 +9,10 @@ import utilities from '../../helpers/utilities';
 const displayPlanes = () => {
   $('#planes-link').on('click', () => {
     $('#planes').show();
+    $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#home').hide();
   });
 };
 
@@ -54,7 +58,7 @@ const buildPlanes = () => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       const user = firebase.auth().currentUser;
       if (user != null) {
-        domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Plane</button>';
+        domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px;">Add Plane</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
       planes.forEach((plane) => {

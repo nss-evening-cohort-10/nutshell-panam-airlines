@@ -13,7 +13,7 @@ const displayHome = () => {
     $('#airports').hide();
     $('#crew').hide();
     $('#foodModule').hide();
-    $('#plane').hide();
+    $('#planes').hide();
   });
 };
 
