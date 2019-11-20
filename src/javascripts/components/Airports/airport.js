@@ -135,15 +135,15 @@ const AirportModal = (airport) => {
         <form>
           <div class="form-group>
             <label for="image" class="col-form-label">ImageUrl:</label>
-            <input type="text" class="form-control" id="image">
+            <input type="text" class="form-control" id="image" value="${airport.imageUrl ? airport.imageUrl : ''}">
           </div>
           <div class="form-group">
             <label for="name" class="col-form-label">Name:</label>
-            <textarea class="form-control" id="name"></textarea>
+            <input type="text" class="form-control" id="name" value="${airport.name ? airport.name : ''}"></input>
           </div>
           <div class="form-group">
             <label for="location" class="col-form-label">Location:</label>
-            <textarea class="form-control" id="location"></textarea>
+            <input type="text" class="form-control" id="location" value="${airport.location ? airport.location : ''}"></input>
           </div>
           <div class="form-group">
             <label for="isInternational" class="col-form-label">International:</label>
