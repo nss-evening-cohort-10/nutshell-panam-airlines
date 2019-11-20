@@ -96,7 +96,7 @@ const createAirportCard = () => {
           <div class="card-body">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
-            <button type="button" class="edit-button btn btn-outline-warning">Edit</button>
+            <button type="button" id="${airport.id}" class="edit-button btn btn-outline-warning">Edit</button>
             <button type="button" class="delete-button btn btn-outline-danger" id=${airport.id}>Delete</button>
           </div>
         </div>
@@ -122,7 +122,7 @@ const createAirportCard = () => {
     .catch((error) => console.error(error));
 };
 
-const AirportModal = () => {
+const AirportModal = (airport) => {
   const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -153,7 +153,7 @@ const AirportModal = () => {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="save" class="btn btn-primary">Save</button>
+        <button type="button" id="${airport.id ? 'edit' : 'save'}" class="save" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>`;
