@@ -18,24 +18,18 @@ const getFood = () => new Promise((resolve, reject) => {
 });
 
 const getFoodByID = (id) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/food.json?orderBy="id"&equalTo="${id}"`)
+  axios.get(`${baseUrl}/food/${id}.json`)
     .then((response) => {
-      const demFoods = response.data;
-      const foods = [];
-      Object.keys(demFoods).forEach((fdId) => {
-        demFoods[fdId].id = fdId;
-        foods.push(demFoods[fdId]);
-      });
-      resolve(foods);// Hard code to return foods
+      resolve(response.data);
     })
     .catch((error) => reject(error));
 });
 
 const addNewFood = (newFood) => axios.post(`${baseUrl}/food.json`, newFood);
 
-const deleteFood = (id) => axios.delete(`${baseUrl}/food/${id}.json`);
+const deleteFood = (foodId) => axios.delete(`${baseUrl}/food/${foodId}.json`);
 
-const editFood = (id, editedFood) => axios.put(`${baseUrl}/food/${id}.json`, editedFood);
+const editFood = (id, updatedFood) => axios.put(`${baseUrl}/food/${id}.json`, updatedFood);
 
 export default {
   getFood,

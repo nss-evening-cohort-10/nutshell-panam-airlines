@@ -14,8 +14,8 @@ const singleFoodCard = (food) => {
               <p>${food.price}</p>
               <p>${food.calsPerServing} Cals</p>
               <p>Menu Category: ${food.menuCategory}</p>
-              <button type="button" class="btn" data-toggle="modal" data- 
-               target="#exampleModal" id="edit-food" style="background-color: #1c69b1; color: white;">
+              <button type="button" class="btn edit-food" data-toggle="modal" data- 
+               target="#exampleModal" id="${food.id}" style="background-color: #1c69b1; color: white;">
                   Edit
                </button>
           </div>`;
@@ -46,29 +46,29 @@ const foodModal = (food) => {
         <form>
           <div class="form-group>
             <label for="name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name" value="${food.name ? food.name : ''}>
+            <input type="text" class="form-control" id="name" value="${food.name ? food.name : ''}">
           </div>
           <div class="form-group">
             <label for="calsPerServing" class="col-form-label">Calories:</label>
-            <input type="text" class="form-control" id="calsPerServing" value="${food.calsPerServing ? food.calsPerServing : ''}></input>
+            <input type="text" class="form-control" id="calsPerServing" value="${food.calsPerServing ? food.calsPerServing : ''}"></input>
           </div>
           <div class="form-group">
             <label for="imageURL" class="col-form-label">Image URL:</label>
-            <input type="text" class="form-control" id="imageURL" value="${food.imageURL ? food.imageURL : ''}></input>
+            <input type="text" class="form-control" id="imageURL" value="${food.imageURL ? food.imageURL : ''}"></input>
           </div>
           <div class="form-group">
             <label for="price" class="col-form-label">Price:</label>
-            <input type="text" class="form-control" id="price" value="${food.price ? food.price : ''}></input>
+            <input type="text" class="form-control" id="price" value="${food.price ? food.price : ''}"></input>
           </div>
           <div class="form-group">
             <label for="menuCategory" class="col-form-label">Menu Category:</label>
-            <input type="text" class="form-control" id="menuCategory" value="${food.menuCategory ? food.menuCategory : ''}></input>
+            <input type="text" class="form-control" id="menuCategory" value="${food.menuCategory ? food.menuCategory : ''}"></input>
           </div>
         </form>
       </div>
-      <div class="modal-footer text-center">
+      <div class="modal-footer text-center" id="${food.id}">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="submit" class="btn" style="background-color: #1c69b1; color: white; font-weight: bold;">Submit</button>
+        <button type="button" id="${food.id ? 'update' : 'submit'}" class="btn" style="background-color: #1c69b1; color: white; font-weight: bold;">Submit</button>
       </div>
     </div>
   </div>`;
