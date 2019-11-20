@@ -33,6 +33,8 @@ const createFoodCards = () => {
       $(document.body).on('click', '#add-new-food', newFoodDetails);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '.delete-food', deleteFood);
+      // eslint-disable-next-line no-use-before-define
+      $(document.body).on('click', '#edit-food', editedFoodDetails);
     })
     .catch((error) => console.error(error));
 };
@@ -60,6 +62,8 @@ const newFoodDetails = (food) => {
   domString += foodCardBuilder.foodModal(food);
   utilities.printToDom('exampleModal', domString);
   $('#submit').click(addNewFood);
+  // eslint-disable-next-line no-use-before-define
+  $('.update').click(updateFoodValues);
 };
 
 const deleteFood = (e) => {
@@ -67,6 +71,24 @@ const deleteFood = (e) => {
   foodData.deleteFood(e.target.id)
     .then(() => {
     // eslint-disable-next-line no-use-before-define
+      createFoodCards();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateFoodValues = (e) => {
+  const editedFoodId = e.target.id;
+  const editedFood = {
+    name: $('#name').val(),
+    calsPerServing: $('#calsPerServing').val(),
+    imageURL: $('#imageURL').val(),
+    price: $('#price').val(),
+    menuCategory: $('#menuCategory').val(),
+  };
+  foodData.editFood(editedFoodId, editedFood)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
       createFoodCards();
     })
     .catch((error) => console.error(error));

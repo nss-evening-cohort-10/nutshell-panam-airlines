@@ -35,9 +35,12 @@ const addNewFood = (newFood) => axios.post(`${baseUrl}/food.json`, newFood);
 
 const deleteFood = (id) => axios.delete(`${baseUrl}/food/${id}.json`);
 
+const editFood = (id, editedFood) => axios.put(`${baseUrl}/food/${id}.json`, editedFood);
+
 export default {
   getFood,
   getFoodByID,
   addNewFood,
   deleteFood,
+  editFood,
 };
