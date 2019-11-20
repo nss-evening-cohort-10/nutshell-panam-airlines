@@ -45,11 +45,41 @@ const addNewPlane = (e) => {
     .catch((error) => console.error(error));
 };
 
+
 const newPlaneInfo = (plane) => {
   let domString = '';
   domString += PlanesBuilder.PlaneModal(plane);
   utilities.printToDom('exampleModal', domString);
   $('#save').click(addNewPlane);
+};
+
+const editPlaneInfo = (e) => {
+  e.stopImmediatePropagation();
+  const planeid = e.target.parentNode.id;
+  const updatedPlane = {
+    team: $('#team').val(),
+    airport: $('#airport').val(),
+    planeNum: $('#planeNum').val(),
+    modelType: $('#modelType').val(),
+    capacity: $('#capacity').val(),
+  };
+  planesData.updatePlane(planeid, updatedPlane)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildPlanes();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateAPlane = (e) => {
+  planesData.getPlaneById(e.target.id)
+    .then((response) => {
+      $('#exampleModal').modal('show');
+      response.id = e.target.id;
+      newPlaneInfo(response);
+      $('#edit').click(editPlaneInfo);
+    });
 };
 
 const buildPlanes = () => {
@@ -69,6 +99,7 @@ const buildPlanes = () => {
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
       $('#add-new-plane').click(newPlaneInfo);
+      $('#planes').on('click', '.edit', updateAPlane);
     })
     .catch((error) => console.error(error));
 };
