@@ -32,9 +32,9 @@ const addAirport = (e) => {
     imageUrl: $('#image').val(),
     name: $('#name').val(),
     location: $('#location').val(),
-    isInternational: $('#isInternational').val(),
+    isInternational: $('#isInternational').prop('checked'),
   };
-  airportsData.addAirport(newAirport)
+  airportsData.addNewAirport(newAirport)
     .then(() => {
       $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
@@ -46,7 +46,7 @@ const addAirport = (e) => {
 const newAirportInfo = (airport) => {
   let domString = '';
   // eslint-disable-next-line no-use-before-define
-  domString += airport.AirportModal(airport);
+  domString += AirportModal(airport);
   utilities.printToDom('exampleModal', domString);
   $('.save').on('click', addAirport);
 };
@@ -118,7 +118,7 @@ const AirportModal = () => {
           </div>
           <div class="form-group">
             <label for="isInternational" class="col-form-label">International:</label>
-            <input type="checkbox" id="isInternational" name="isInternational" value="true" checked> True
+            <input type="checkbox" id="isInternational" name="isInternational" value="true" checked>
           </div>
         </form>
       </div>
