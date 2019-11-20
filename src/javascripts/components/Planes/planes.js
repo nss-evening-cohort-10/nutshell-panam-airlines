@@ -45,19 +45,6 @@ const addNewPlane = (e) => {
     .catch((error) => console.error(error));
 };
 
-const updateAPlane = () => {
-  // e.stopImmediatePropagation();
-  // planesData.deletePlane(e.target.id);
-  // eslint-disable-next-line no-use-before-define
-  getPlaneById();
-};
-
-const getPlaneById = (planeId) => {
-  planesData.getPlaneById(planeId);
-    .then((plane) => {
-      console.log(plane);
-    });
-};
 
 const newPlaneInfo = (plane) => {
   let domString = '';
@@ -66,12 +53,42 @@ const newPlaneInfo = (plane) => {
   $('#save').click(addNewPlane);
 };
 
+const editPlaneInfo = (e) => {
+  e.stopImmediatePropagation();
+  const planeid = e.target.parentNode.id;
+  const updatedPlane = {
+    team: $('#team').val(),
+    airport: $('#airport').val(),
+    planeNum: $('#planeNum').val(),
+    modelType: $('#modelType').val(),
+    capacity: $('#capacity').val(),
+  };
+  planesData.updatePlane(planeid, updatedPlane)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildPlanes();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateAPlane = (e) => {
+  planesData.getPlaneById(e.target.id)
+    .then((response) => {
+      $('#exampleModal').modal('show');
+      response.id = e.target.id;
+      newPlaneInfo(response);
+      $('#edit').click(editPlaneInfo);
+    });
+};
+
 const buildPlanes = () => {
   planesData.getPlanes()
     .then((planes) => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       const user = firebase.auth().currentUser;
       if (user != null) {
+        // eslint-disable-next-line max-len
         domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px;">Add Plane</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
