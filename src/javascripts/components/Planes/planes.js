@@ -24,7 +24,7 @@ const deleteAPlane = (e) => {
       // eslint-disable-next-line no-use-before-define
       buildPlanes(planeId);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.error(error));
 };
 
 const addNewPlane = (e) => {
@@ -58,6 +58,7 @@ const buildPlanes = () => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       const user = firebase.auth().currentUser;
       if (user != null) {
+        // eslint-disable-next-line max-len
         domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px;">Add Plane</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';

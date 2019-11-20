@@ -1,7 +1,7 @@
 {
-  "airports" : "",
+  "airports" : "airports",
   "planes" : "planes",
-  "crew" : "",
-  "food" : "",
-  "baggage" : ""
+  "crew" : "crew",
+  "food" : "food",
+  "baggage" : "baggage"
 }
