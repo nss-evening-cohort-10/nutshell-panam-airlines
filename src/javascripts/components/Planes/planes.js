@@ -24,7 +24,7 @@ const deleteAPlane = (e) => {
       // eslint-disable-next-line no-use-before-define
       buildPlanes(planeId);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.error(error));
 };
 
 const addNewPlane = (e) => {
@@ -45,11 +45,41 @@ const addNewPlane = (e) => {
     .catch((error) => console.error(error));
 };
 
+
 const newPlaneInfo = (plane) => {
   let domString = '';
   domString += PlanesBuilder.PlaneModal(plane);
   utilities.printToDom('exampleModal', domString);
   $('#save').click(addNewPlane);
+};
+
+const editPlaneInfo = (e) => {
+  e.stopImmediatePropagation();
+  const planeid = e.target.parentNode.id;
+  const updatedPlane = {
+    team: $('#team').val(),
+    airport: $('#airport').val(),
+    planeNum: $('#planeNum').val(),
+    modelType: $('#modelType').val(),
+    capacity: $('#capacity').val(),
+  };
+  planesData.updatePlane(planeid, updatedPlane)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildPlanes();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateAPlane = (e) => {
+  planesData.getPlaneById(e.target.id)
+    .then((response) => {
+      $('#exampleModal').modal('show');
+      response.id = e.target.id;
+      newPlaneInfo(response);
+      $('#edit').click(editPlaneInfo);
+    });
 };
 
 const buildPlanes = () => {
@@ -58,6 +88,7 @@ const buildPlanes = () => {
       let domString = '<h1 class="title">Fleet Inventory & Maintenance</h1>';
       const user = firebase.auth().currentUser;
       if (user != null) {
+        // eslint-disable-next-line max-len
         domString += '<button type="button" id="add-new-plane" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px;">Add Plane</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
@@ -68,6 +99,7 @@ const buildPlanes = () => {
       utilities.printToDom('planes', domString);
       $('#planes').on('click', '.delete', deleteAPlane);
       $('#add-new-plane').click(newPlaneInfo);
+      $('#planes').on('click', '.edit', updateAPlane);
     })
     .catch((error) => console.error(error));
 };

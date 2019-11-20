@@ -22,7 +22,7 @@ const makeAPlane = (plane) => {
   return domString;
 };
 
-const PlaneModal = () => {
+const PlaneModal = (plane) => {
   const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,30 +35,30 @@ const PlaneModal = () => {
         <form>
           <div class="form-group>
             <label for="planeNum" class="col-form-label">Plane No.</label>
-            <input type="text" class="form-control" id="planeNum">
+            <input type="text" class="form-control" id="planeNum" value="${plane.planeNum ? plane.planeNum : ''}">
           </div>
           <div class="form-group">
             <label for="airport" class="col-form-label">Airport:</label>
-            <textarea class="form-control" id="airport"></textarea>
+            <input type="text" class="form-control" id="airport" value="${plane.airport ? plane.airport : ''}"></>
           </div>
           <div class="form-group">
             <label for="team" class="col-form-label">Team:</label>
-            <textarea class="form-control" id="team"></textarea>
+            <input type="text" class="form-control" id="team" value="${plane.team ? plane.team : ''}"></>
           </div>
           <div class="form-group">
             <label for="modelType" class="col-form-label">Model/Type:</label>
-            <textarea class="form-control" id="modelType"></textarea>
+            <input type="text" class="form-control" id="modelType" value="${plane.modelType ? plane.modelType : ''}"></>
           </div>
           <div class="form-group">
             <label for="capacity" class="col-form-label">Capacity:</label>
-            <textarea class="form-control" id="capacity"></textarea>
+            <input type="text" class="form-control" id="capacity" value="${plane.capacity ? plane.capacity : ''}"></>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="${plane.id}">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="save" class="btn btn-primary">Save</button>
-      </div>
+        <button type="button" id="${plane.id ? 'edit' : 'save'}" class="btn btn-primary">Save</button>
+        </div>
     </div>
   </div>`;
   return domString;
