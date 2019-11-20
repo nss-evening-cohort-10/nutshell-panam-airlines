@@ -17,8 +17,25 @@ const getPlanes = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getPlaneById = (planeId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/planes/${planeId}.json`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
+
+
 const deletePlane = (planeId) => axios.delete(`${baseUrl}/planes/${planeId}.json`);
 
 const addNewPlane = (newPlane) => axios.post(`${baseUrl}/planes.json`, newPlane);
 
-export default { getPlanes, deletePlane, addNewPlane };
+const updatePlane = (planeId, updatedPlane) => axios.put(`${baseUrl}/planes/${planeId}.json`, updatedPlane);
+
+export default {
+  getPlanes,
+  deletePlane,
+  addNewPlane,
+  updatePlane,
+  getPlaneById,
+};
