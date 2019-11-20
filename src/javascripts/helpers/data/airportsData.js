@@ -17,8 +17,24 @@ const getAllAirports = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAirportById = (airportId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/airports/${airportId}.json`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
+
+const updateAirport = (airportId, updatedAirport) => axios.put(`${baseUrl}airports/${airportId}.json`, updatedAirport);
+
 const removeAirport = (airportId) => axios.delete(`${baseUrl}/airports/${airportId}.json`);
 
 const addNewAirport = (newAirport) => axios.post(`${baseUrl}/airports.json`, newAirport);
 
-export default { getAllAirports, removeAirport, addNewAirport };
+export default {
+  getAllAirports,
+  removeAirport,
+  addNewAirport,
+  updateAirport,
+  getAirportById,
+};

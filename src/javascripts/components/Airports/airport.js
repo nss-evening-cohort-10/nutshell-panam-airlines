@@ -51,6 +51,34 @@ const newAirportInfo = (airport) => {
   $('.save').on('click', addAirport);
 };
 
+const editAirportInfo = (e) => {
+  e.stopImmediatePropagation();
+  const airportid = e.target.parentNode.id;
+  const updatedAirport = {
+    imageUrl: $('#image').val(),
+    name: $('#name').val(),
+    location: $('#location').val(),
+    isInternational: $('#isInternational').prop('checked'),
+  };
+  airportsData.updateAirport(airportid, updatedAirport)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      createAirportCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateAnAirport = (e) => {
+  airportsData.getAirportById(e.target.id)
+    .then((response) => {
+      $('#exampleModal').modal('show');
+      response.id = e.target.id;
+      newAirportInfo(response);
+      $('.save').click(editAirportInfo);
+    });
+};
+
 const createAirportCard = () => {
   const user = firebase.auth().currentUser;
   airportsData.getAllAirports()
@@ -89,6 +117,7 @@ const createAirportCard = () => {
       utilities.printToDom('airports', domString);
       $('.delete-button').on('click', deleteAirport);
       $('.add-button').on('click', newAirportInfo);
+      $('#airports').on('click', '.edit-button', updateAnAirport);
     })
     .catch((error) => console.error(error));
 };
