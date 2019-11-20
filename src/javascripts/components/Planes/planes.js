@@ -24,7 +24,7 @@ const deleteAPlane = (e) => {
       // eslint-disable-next-line no-use-before-define
       buildPlanes(planeId);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.error(error));
 };
 
 const addNewPlane = (e) => {
