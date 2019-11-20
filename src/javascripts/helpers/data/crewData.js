@@ -19,4 +19,6 @@ const getAllCrewMembers = () => new Promise((resolve, reject) => {
 
 const removeCrewMember = (id) => axios.delete(`${baseUrl}/crew/${id}.json`);
 
-export default { getAllCrewMembers, removeCrewMember };
+const addNewMember = (crewMember) => axios.post(`${baseUrl}/crew.json`, crewMember);
+
+export default { getAllCrewMembers, removeCrewMember, addNewMember };

@@ -26,11 +26,58 @@ const displayCrew = () => {
   });
 };
 
+const createCrewModal = () => {
+  const domString = `
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Crew Member</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Team ID:</label>
+              <textarea class="form-control" id="teamId"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Title:</label>
+              <textarea class="form-control" id="title"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Photo:</label>
+              <textarea class="form-control" id="photo"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Bio:</label>
+              <textarea class="form-control" id="bio"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="create-save" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+    `;
+  return domString;
+};
+
 const createCrewCard = () => {
   const user = firebase.auth().currentUser;
   crewData.getAllCrewMembers()
     .then((crews) => {
       let domString = '<h1 class="crew-heading">FLIGHT CREW</h1>';
+      if (user !== null) {
+        domString += '<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" id="create-modal" data-target="#exampleModal" data-whatever="@mdo">Create Employee</button></div>';
+      }
       domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
       crews.forEach((crew) => {
         if (user !== null) {
@@ -65,8 +112,34 @@ const createCrewCard = () => {
       domString += '</div>';
       utilities.printToDom('crew', domString);
       $('#crew').on('click', '.close-crewCard', deleteCrewMember);
+      // eslint-disable-next-line no-use-before-define
+      $(document.body).on('click', '#create-modal', createCrewMembers);
     })
     .catch((error) => console.error(error));
+};
+
+const addCrewMember = (e) => {
+  e.stopImmediatePropagation();
+  const crewMember = {
+    name: $('#name').val(),
+    teamId: $('#teamId').val(),
+    title: $('#title').val(),
+    photo: $('#photo').val(),
+    bio: $('#bio').val(),
+  };
+  crewData.addNewMember(crewMember)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      createCrewCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+const createCrewMembers = () => {
+  let domString = '';
+  domString += createCrewModal();
+  utilities.printToDom('exampleModal', domString);
+  $('#create-save').click(addCrewMember);
 };
 
 export default { createCrewCard, displayCrew };
