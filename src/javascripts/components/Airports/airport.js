@@ -86,7 +86,7 @@ const buildAirports = () => {
       const user = firebase.auth().currentUser;
       if (user != null) {
         // eslint-disable-next-line max-len
-        domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
+        // domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
       // airports.forEach((airport) => {
