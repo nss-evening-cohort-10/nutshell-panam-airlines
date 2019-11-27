@@ -80,7 +80,7 @@ const updateAnAirport = (e) => {
 };
 
 const buildAirports = () => {
-  airportsData.getAirports()
+  airportsData.getAllAirports()
     .then((airports) => {
       let domString = '<h1 class="airports-title text-center">Airports</h1>';
       const user = firebase.auth().currentUser;
@@ -89,10 +89,9 @@ const buildAirports = () => {
         domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
-      airports.forEach((airport) => {
-        // eslint-disable-next-line no-use-before-define
-        domString += AirportsBuilder.createAirportCard(airport);
-      });
+      // airports.forEach((airport) => {
+      // eslint-disable-next-line no-use-before-define
+      domString += AirportsBuilder.createAirportCard(airports);
       domString += '</div>';
       utilities.printToDom('airports', domString);
       $('.delete-button').on('click', deleteAirport);

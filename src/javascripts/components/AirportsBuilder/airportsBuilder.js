@@ -1,18 +1,18 @@
 import './airportsBuilder.scss';
 import firebase from 'firebase';
 
-const createAirportCard = () => {
+const createAirportCard = (airports) => {
   const user = firebase.auth().currentUser;
-  airportsData.getAllAirports()
-    .then((airports) => {
-      let domString = '<h1 class="airports-title text-center">Airports</h1>';
-      if (user != null) {
-        domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
-      }
-      domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
-      airports.forEach((airport) => {
-        if (user != null) {
-          domString += `
+  // airportsData.getAllAirports()
+  //   .then((airports) => {
+  let domString = '<h1 class="airports-title text-center">Airports</h1>';
+  if (user != null) {
+    domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
+  }
+  domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
+  airports.forEach((airport) => {
+    if (user != null) {
+      domString += `
         <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
           <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
           <div class="card-body">
@@ -23,8 +23,8 @@ const createAirportCard = () => {
           </div>
         </div>
         `;
-        } else {
-          domString += `
+    } else {
+      domString += `
         <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
           <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
           <div class="card-body">
@@ -33,14 +33,16 @@ const createAirportCard = () => {
           </div>
         </div>
         `;
-        }
-      domString += '</div>';
-      return domString;
-      });
-
-
-      const AirportModal = (airport) => {
-        const domString = `<div class="modal-dialog" role="document">
+    }
+    domString += '</div>';
+    // utilities.printToDom('airports', domString);
+    // $('.delete-button').on('click', deleteAirport);
+    // $('.add-button').on('click', newAirportInfo);
+  });
+  return domString;
+};
+const AirportModal = (airport) => {
+  const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">New Airport</h5>
@@ -74,7 +76,7 @@ const createAirportCard = () => {
       </div>
     </div>
   </div>`;
-        return domString;
-      };
+  return domString;
+};
 
-        export default { createAirportCard, AirportModal };
+export default { createAirportCard, AirportModal };

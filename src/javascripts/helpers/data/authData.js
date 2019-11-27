@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import food from '../../components/foodService/foodService';
 import crew from '../../components/crew/crew';
-import airport from '../../components/Airports/airport';
+import airportsBuilder from '../../components/AirportsBuilder/airportsBuilder';
 import planes from '../../components/Planes/planes';
 
 
@@ -18,7 +18,7 @@ const checkLoginStatus = () => {
       logoutButton.removeClass('hide');
       crew.createCrewCard();
       food.createFoodCards();
-      airport.createAirportCard();
+      airportsBuilder.createAirportCard();
       planes.buildPlanes();
     } else {
       // nobody logged in SHOW login button
@@ -26,7 +26,7 @@ const checkLoginStatus = () => {
       logoutButton.addClass('hide');
       crew.createCrewCard();
       food.createFoodCards();
-      airport.createAirportCard();
+      airportsBuilder.createAirportCard();
       planes.buildPlanes();
     }
   });
