@@ -1,0 +1,29 @@
+{
+  "crew1": {
+    "name": "SKYHAWKZZ",
+    "pilot1": "crewMember1",
+    "pilot2": "crewMember2",
+    "fa1": "crewMember7",
+    "fa2": "crewMember8",
+    "fa3": "crewMember9",
+    "am1": "crewMember10"
+  },
+  "crew2": {
+    "name": "PHOENIXZZ",
+    "pilot1": "crewMember3",
+    "pilot2": "crewMember4",
+    "fa1": "crewMember5",
+    "fa2": "crewMember6",
+    "fa3": "crewMember7",
+    "am1": "crewMember9"
+  },
+  "crew3": {
+    "name": "Crew 3",
+    "pilot1": "crewMember1",
+    "pilot2": "crewMember3",
+    "fa1": "crewMember5",
+    "fa2": "crewMember8",
+    "fa3": "crewMember9",
+    "am1": "crewMember10"
+  }
+}
