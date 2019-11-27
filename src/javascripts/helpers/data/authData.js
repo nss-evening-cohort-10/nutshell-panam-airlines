@@ -2,7 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import food from '../../components/foodService/foodService';
-import crew from '../../components/crew/crew';
+import crewMembers from '../../components/crewMembers/crewMembers';
 import airport from '../../components/Airports/airport';
 import planes from '../../components/Planes/planes';
 
@@ -16,7 +16,7 @@ const checkLoginStatus = () => {
       // someone is logged in - we should NOT see login button
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
-      crew.createCrewCard();
+      crewMembers.createCrewMemberCard();
       food.createFoodCards();
       airport.createAirportCard();
       planes.buildPlanes();
@@ -24,7 +24,7 @@ const checkLoginStatus = () => {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
-      crew.createCrewCard();
+      crewMembers.createCrewMemberCard();
       food.createFoodCards();
       airport.createAirportCard();
       planes.buildPlanes();
