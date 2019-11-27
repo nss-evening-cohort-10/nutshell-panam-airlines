@@ -30,7 +30,7 @@ const removeAirport = (airportId) => axios.delete(`${baseUrl}/airports/${airport
 
 const addNewAirport = (newAirport) => axios.post(`${baseUrl}/airports.json`, newAirport);
 
-const updateAirport = (airportId, updatedAirport) => axios.put(`${baseUrl}airports/${airportId}.json`, updatedAirport);
+const updateAirport = (airportId, updatedAirport) => axios.put(`${baseUrl}/airports/${airportId}.json`, updatedAirport);
 
 export default {
   getAllAirports,

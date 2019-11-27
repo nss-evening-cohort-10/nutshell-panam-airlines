@@ -17,7 +17,7 @@ const displayAirports = () => {
 
 const deleteAirport = (e) => {
   e.preventDefault();
-  const { airportId } = e.target.id;
+  const airportId = e.target.parentNode.id;
   airportsData.removeAirport(e.target.id)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -73,7 +73,7 @@ const updateAnAirport = (e) => {
   airportsData.getAirportById(e.target.id)
     .then((response) => {
       $('#exampleModal').modal('show');
-      response.id = e.target.id;
+      response.id = e.target.parentNode.id;
       newAirportInfo(response);
       $('.save').click(editAirportInfo);
     });
@@ -86,7 +86,7 @@ const buildAirports = () => {
       const user = firebase.auth().currentUser;
       if (user != null) {
         // eslint-disable-next-line max-len
-        // domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
+        domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
       }
       domString += '<div class="d-flex flex-wrap text-center">';
       // airports.forEach((airport) => {

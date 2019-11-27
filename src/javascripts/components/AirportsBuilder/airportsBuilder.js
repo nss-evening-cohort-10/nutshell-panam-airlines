@@ -5,17 +5,17 @@ const createAirportCard = (airports) => {
   const user = firebase.auth().currentUser;
   // airportsData.getAllAirports()
   //   .then((airports) => {
-  let domString = '<h1 class="airports-title text-center">Airports</h1>';
+  let domString = '';
   if (user != null) {
-    domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
+    // domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
   }
   domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
   airports.forEach((airport) => {
     if (user != null) {
       domString += `
-        <div id="${airport.id}" class="card airport-card" style="width: 18rem;">
+        <div class="card airport-card" style="width: 18rem;">
           <img src="${airport.imageUrl}" class="card-img-top airport-image" alt="${airport.name}">
-          <div class="card-body">
+          <div class="card-body" id="${airport.id}">
             <h5 class="card-title">${airport.name}</h5>
             <p class="card-text">${airport.location}</p>
             <button type="button" id="${airport.id}" class="edit-button btn btn-outline-warning">Edit</button>
