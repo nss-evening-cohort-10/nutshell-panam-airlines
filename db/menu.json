@@ -1,0 +1,38 @@
+{
+  "menu1": {
+    "name": "Breakfast Menu",
+   "isLong": "true",
+   "foodItemId1": "food3",
+   "foodItemId2": "food8",
+   "foodItemId3": "snack1",
+   "foodItemId4": "snack3"
+   },
+  "menu2": {
+   "name": "Lunch Menu",
+  "isLong": "true",
+  "foodItemId1": "food2",
+  "foodItemId2": "food6",
+  "foodItemId3": "snack2",
+  "foodItemId4": "snack4"
+  },
+  "menu3": {
+    "name": "Dinner Menu",
+   "isLong": "true",
+   "foodItemId1": "food7",
+   "foodItemId2": "food5",
+   "foodItemId3": "snack4",
+   "foodItemId4": "snack3"
+   },
+   "menu4": {
+    "name": "Snack Menu",
+   "isLong": "false",
+   "foodItemId1": "snack1",
+   "foodItemId2": "snack3"
+   },
+   "menu5": {
+    "name": "Alternate Snack Menu",
+   "isLong": "false",
+   "foodItemId1": "snack2",
+   "foodItemId2": "snack4"
+   }
+}

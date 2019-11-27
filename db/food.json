@@ -54,5 +54,29 @@
     "imageURL": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/BFSP01_shrimp-and-grits_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599794400.jpeg",
     "price": 1240,
     "menuCategory": "Breakfast"
+  },
+  "snack1": {
+    "name": "Granola Bar",
+    "quantity": "200",
+    "isSnack": "true",
+    "image": "https://images.unsplash.com/photo-1464195157370-5b596406ff80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"
+  },
+  "snack2": {
+    "name": "Peanuts",
+    "quantity": "150",
+    "isSnack": "true",
+    "image": "https://images.unsplash.com/photo-1560381044-dcef2a8888d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+  },
+  "snack3": {
+    "name": "Dried Fruit",
+    "quantity": "100",
+    "isSnack": "true",
+    "image": "https://images.unsplash.com/photo-1541675955960-b9c87e17883d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
+  },
+  "snack4": {
+    "name": "Beef Jerky",
+    "quantity": "250",
+    "isSnack": "true",
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.nueskes.com%2Fassets%2F1%2F20%2FDimLarge%2F374_Traditional_Hickory_Smoked_Beef_Jerky.jpg%3F704&f=1&nofb=1"
   }
 }
