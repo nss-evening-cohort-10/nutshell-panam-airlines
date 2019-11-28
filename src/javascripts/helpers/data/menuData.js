@@ -9,9 +9,9 @@ const menusDataByFlightId = (flightId) => new Promise((resolve, reject) => {
     .then((response) => {
       const demMenus = response.data;
       const menus = [];
-      Object.keys(demMenus).forEach((ftId) => {
-        demMenus[ftId].id = ftId;
-        menus.push(demMenus[ftId]);
+      Object.keys(demMenus).forEach((fbId) => {
+        demMenus[fbId].id = fbId;
+        menus.push(demMenus[fbId]);
       });
       resolve(menus);
     })
