@@ -19,8 +19,12 @@ const getAllCrewMembers = () => new Promise((resolve, reject) => {
 
 const getCrewMemberById = (crewMemberId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/crew/${crewMemberId}.json`)
-    .then()
-    .catch();
+    .then((response) => {
+      const datCrewMember = response.data;
+      datCrewMember.id = crewMemberId;
+      resolve(datCrewMember);
+    })
+    .catch((error) => reject(error));
 });
 
 const removeCrewMember = (id) => axios.delete(`${baseUrl}/crew/${id}.json`);
@@ -34,4 +38,5 @@ export default {
   removeCrewMember,
   addNewMember,
   updateCrewMember,
+  getCrewMemberById,
 };
