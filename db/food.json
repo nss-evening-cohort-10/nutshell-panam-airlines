@@ -2,6 +2,7 @@
   "food1": {
     "name": "Bacon",
     "calsPerServing": 150,
+    "isSnack": "false",
     "imageURL": "https://eightmilecreekfarm.com/wp-content/uploads/2015/03/improvKitchen_howToCookBacon_00.jpg",
     "price": 500,
     "menuCategory": "Breakfast"
@@ -9,6 +10,7 @@
   "food2": {
     "name": "Burger",
     "calsPerServing": 890,
+    "isSnack": "false",
     "imageURL": "https://www.howsweeteats.com/wp-content/uploads/2018/06/veg-burgers-I-howsweeteats.com-15.jpg",
     "price": 1100,
     "menuCategory": "Lunch/Dinner"
@@ -16,6 +18,7 @@
   "food3": {
     "name": "Quiche",
     "calsPerServing": 150,
+    "isSnack": "false",
     "imageURL": "https://bakingamoment.com/wp-content/uploads/2019/04/IMG_3854-best-quiche-lorraine-recipe.jpg",
     "price": 800,
     "menuCategory": "Breakfast"
@@ -23,6 +26,7 @@
   "food4": {
     "name": "Ramen",
     "calsPerServing": 1320,
+    "isSnack": "false",
     "imageURL": "https://cdn.apartmenttherapy.info/image/fetch/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/https%3A%2F%2Fstorage.googleapis.com%2Fgen-atmedia%2F3%2F2018%2F01%2F4228906cb4af7dccaf0c7809e5e354a1a6f693b0.jpeg",
     "price": 1300,
     "menuCategory": "Lunch/Dinner"
@@ -30,6 +34,7 @@
   "food5": {
     "name": "Sushi",
     "calsPerServing": 760,
+    "isSnack": "false",
     "imageURL": "https://urbanmatter.com/chicago/wp-content/uploads/2018/03/hp_10.jpg",
     "price": 960,
     "menuCategory": "Lunch/Dinner"
@@ -37,6 +42,7 @@
   "food6": {
     "name": "Fajitas",
     "calsPerServing": 630,
+    "isSnack": "false",
     "imageURL": "https://www.culinaryhill.com/wp-content/uploads/2018/04/Chicken-Fajitas-Culinary-Hill-square.jpg",
     "price": 1090,
     "menuCategory": "Lunch/Dinner"
@@ -44,6 +50,7 @@
   "food7": {
     "name": "Truffle Mac",
     "calsPerServing": 1500,
+    "isSnack": "false",
     "imageURL": "https://theviewfromgreatisland.com/wp-content/uploads/2019/01/truffle-macaroni-and-cheese-3994-January-06-2019.jpg",
     "price": 1600,
     "menuCategory": "Lunch/Dinner"
@@ -51,8 +58,41 @@
   "food8": {
     "name": "Shrimp N' Grits",
     "calsPerServing": 890,
+    "isSnack": "false",
     "imageURL": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/BFSP01_shrimp-and-grits_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599794400.jpeg",
     "price": 1240,
     "menuCategory": "Breakfast"
+  },
+  "food9": {
+    "name": "Granola Bar",
+    "calsPerServing": 200,
+    "isSnack": "true",
+    "imageURL": "https://images.unsplash.com/photo-1464195157370-5b596406ff80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80",
+    "price": 540,
+    "menuCategory": "Snack"
+  },
+  "food10": {
+    "name": "Peanuts",
+    "calsPerServing": "150",
+    "isSnack": "true",
+    "imageURL": "https://images.unsplash.com/photo-1560381044-dcef2a8888d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+    "price": 540,
+    "menuCategory": "Snack"
+  },
+  "food11": {
+    "name": "Dried Fruit",
+    "calsPerServing": "100",
+    "isSnack": "true",
+    "imageURL": "https://images.unsplash.com/photo-1541675955960-b9c87e17883d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80",
+    "price": 540,
+    "menuCategory": "Snack"
+  },
+  "food12": {
+    "name": "Beef Jerky",
+    "calsPerServing": "250",
+    "isSnack": "true",
+    "imageURL": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.nueskes.com%2Fassets%2F1%2F20%2FDimLarge%2F374_Traditional_Hickory_Smoked_Beef_Jerky.jpg%3F704&f=1&nofb=1",
+    "price": 540,
+    "menuCategory": "Snack"
   }
 }
