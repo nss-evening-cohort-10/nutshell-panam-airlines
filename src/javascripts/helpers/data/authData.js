@@ -5,6 +5,7 @@ import food from '../../components/foodService/foodService';
 import crew from '../../components/crew/crew';
 import airports from '../../components/Airports/airport';
 import planes from '../../components/Planes/planes';
+import menu from '../../components/Menus/menus';
 
 
 const loginButton = $('#auth');
@@ -20,6 +21,7 @@ const checkLoginStatus = () => {
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();
+      menu.displayMenu();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
@@ -28,6 +30,7 @@ const checkLoginStatus = () => {
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();
+      menu.displayMenu();
     }
   });
 };

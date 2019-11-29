@@ -4,7 +4,6 @@ import navbar from './components/Navbar/navbar';
 import authData from './helpers/data/authData';
 import airports from './components/Airports/airport';
 import crew from './components/crew/crew';
-import menuDisplay from './components/Menu/menus';
 
 import 'bootstrap';
 import '../styles/main.scss';
@@ -16,6 +15,5 @@ const init = () => {
   navbar.attachEvents();
   airports.buildAirports();
   crew.createCrewCard();
-  menuDisplay.displayMenu();
 };
 init();

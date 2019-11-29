@@ -1,8 +1,7 @@
 import './menus.scss';
 import firebase from 'firebase';
 
-const displayMenu = () => {
-// insert code here
+const displayMenu = (menu) => {
   let domString = '';
   const user = firebase.auth().currentUser;
   if (user != null) {
