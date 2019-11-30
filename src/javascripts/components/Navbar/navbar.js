@@ -6,7 +6,7 @@ import crewMembers from '../crewMembers/crewMembers';
 import food from '../foodService/foodService';
 import auth from '../Auth/auth';
 import planes from '../Planes/planes';
-// import menu from '../Menus/menus';
+import menu from '../Menus/menus';
 import crews from '../crews/crews';
 
 const displayHome = () => {
@@ -14,6 +14,7 @@ const displayHome = () => {
     $('#home').show();
     $('#airports').hide();
     $('#crew').hide();
+    $('#crewMembers').hide();
     $('#foodModule').hide();
     $('#planes').hide();
     $('#menu').hide();
@@ -43,7 +44,7 @@ const attachDropdownEvents = () => {
   crews.displayCrews();
   food.displayFood();
   planes.displayPlanes();
-  // menu.displayMenu();
+  menu.displayMenu();
 };
 
 export default { attachDropdownEvents, attachEvents };

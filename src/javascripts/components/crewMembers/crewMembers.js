@@ -113,7 +113,7 @@ const createCrewMemberCard = () => {
         }
       });
       domString += '</div>';
-      utilities.printToDom('crew', domString);
+      utilities.printToDom('crewMembers', domString);
       $('#crew').on('click', '.close-crewCard', deleteCrewMember);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#create-modal', createCrewMembers);

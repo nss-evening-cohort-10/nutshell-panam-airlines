@@ -9,10 +9,11 @@ const displayFood = () => {
   $('#food-link').on('click', () => {
     $('#foodModule').show();
     $('#home').hide();
-    $('#crew').hide();
+    $('#crews').hide();
     $('#airports').hide();
     $('#planes').hide();
     $('#menu').hide();
+    $('#crewMembers').hide();
   });
 };
 

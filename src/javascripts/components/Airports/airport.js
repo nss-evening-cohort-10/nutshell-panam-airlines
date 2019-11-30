@@ -9,10 +9,11 @@ const displayAirports = () => {
   $('#airports-link').on('click', () => {
     $('#home').hide();
     $('#airports').show();
-    $('#crew').hide();
+    $('#crews').hide();
     $('#foodModule').hide();
     $('#planes').hide();
     $('#menu').hide();
+    $('#crewMembers').hide();
   });
 };
 
