@@ -13,6 +13,7 @@ const displayPlanes = () => {
     $('#crew').hide();
     $('#foodModule').hide();
     $('#home').hide();
+    $('#menu').hide();
   });
 };
 

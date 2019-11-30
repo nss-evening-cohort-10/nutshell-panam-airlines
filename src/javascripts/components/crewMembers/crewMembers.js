@@ -23,6 +23,7 @@ const displayCrewMembers = () => {
     $('#home').hide();
     $('#foodModule').hide();
     $('#planes').hide();
+    $('#menu').hide();
   });
 };
 
