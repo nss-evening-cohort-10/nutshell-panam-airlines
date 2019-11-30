@@ -6,7 +6,7 @@ import crewMembers from '../../components/crewMembers/crewMembers';
 import airports from '../../components/Airports/airport';
 import planes from '../../components/Planes/planes';
 import menu from '../../components/Menus/menus';
-import flights from '../../components/Flights/flightss';
+import flights from '../../components/Flights/flights';
 
 const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
