@@ -1,22 +1,22 @@
 import firebase from 'firebase';
 import $ from 'jquery';
-import './crew.scss';
+import './crewMembers.scss';
 
 import utilities from '../../helpers/utilities';
-import crewData from '../../helpers/data/crewData';
+import crewMemberData from '../../helpers/data/crewMemberData';
 
 const deleteCrewMember = (e) => {
   e.preventDefault();
   const { crewId } = e.target.id;
-  crewData.removeCrewMember(e.target.id)
+  crewMemberData.removeCrewMember(e.target.id)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      createCrewCard(crewId);
+      createCrewMemberCard(crewId);
     })
     .catch((error) => console.error(error));
 };
 
-const displayCrew = () => {
+const displayCrewMembers = () => {
   $('#crew-link').on('click', () => {
     $('#crew').show();
     $('#airports').hide();
@@ -26,12 +26,12 @@ const displayCrew = () => {
   });
 };
 
-const createCrewModal = () => {
+const createCrewMemberModal = (crewMember) => {
   const domString = `
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Crew Member</h5>
+          <h5 class="modal-title" id="exampleModalLabel">${crewMember ? 'Update' : 'Create'} Crew Member</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -40,29 +40,29 @@ const createCrewModal = () => {
           <form>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Name:</label>
-              <input type="text" class="form-control" id="name">
+              <input type="text" class="form-control" id="name" value="${crewMember.name ? crewMember.name : ''}">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Team ID:</label>
-              <textarea class="form-control" id="teamId"></textarea>
+              <textarea class="form-control" id="teamId">${crewMember.teamId ? crewMember.teamId : ''}</textarea>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Title:</label>
-              <textarea class="form-control" id="title"></textarea>
+              <textarea class="form-control" id="title">${crewMember.title ? crewMember.title : ''}</textarea>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Photo:</label>
-              <textarea class="form-control" id="photo"></textarea>
+              <textarea class="form-control" id="photo">${crewMember.photo ? crewMember.photo : ''}</textarea>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Bio:</label>
-              <textarea class="form-control" id="bio"></textarea>
+              <textarea class="form-control" id="bio">${crewMember.bio ? crewMember.bio : ''}</textarea>
             </div>
           </form>
         </div>
-        <div class="modal-footer">
+        <div id="${crewMember.id ? crewMember.id : ''}" class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="create-save" type="button" class="btn btn-primary">Save</button>
+          <button id="${crewMember.id ? 'update-crew' : 'create-save'}" type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -70,12 +70,13 @@ const createCrewModal = () => {
   return domString;
 };
 
-const createCrewCard = () => {
+const createCrewMemberCard = () => {
   const user = firebase.auth().currentUser;
-  crewData.getAllCrewMembers()
+  crewMemberData.getAllCrewMembers()
     .then((crews) => {
       let domString = '<h1 class="crew-heading">FLIGHT CREW</h1>';
       if (user !== null) {
+        // eslint-disable-next-line max-len
         domString += '<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" id="create-modal" data-target="#exampleModal" data-whatever="@mdo">Create Employee</button></div>';
       }
       domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
@@ -92,7 +93,7 @@ const createCrewCard = () => {
               <p class="card-text">${crew.bio}</p>
             </div>
             <div>
-              <button class="btn btn-primary crew-delete">Update Employee</button>
+              <button class="btn btn-primary crew-update" id="update-${crew.id}">Update Employee</button>
             </div>
           </div>
           `;
@@ -114,6 +115,8 @@ const createCrewCard = () => {
       $('#crew').on('click', '.close-crewCard', deleteCrewMember);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#create-modal', createCrewMembers);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.crew-update', showEditCrewMemberModal);
     })
     .catch((error) => console.error(error));
 };
@@ -127,19 +130,55 @@ const addCrewMember = (e) => {
     photo: $('#photo').val(),
     bio: $('#bio').val(),
   };
-  crewData.addNewMember(crewMember)
+  crewMemberData.addNewMember(crewMember)
     .then(() => {
       $('#exampleModal').modal('hide');
-      createCrewCard();
+      createCrewMemberCard();
     })
     .catch((error) => console.error(error));
 };
 
 const createCrewMembers = () => {
   let domString = '';
-  domString += createCrewModal();
+  domString += createCrewMemberModal();
   utilities.printToDom('exampleModal', domString);
   $('#create-save').click(addCrewMember);
 };
 
-export default { createCrewCard, displayCrew };
+const newCrewMemberDetails = (person) => {
+  let string = '';
+  string += createCrewMemberModal(person);
+  utilities.printToDom('exampleModal', string);
+};
+
+const updateCrewMemberObj = (e) => {
+  e.stopImmediatePropagation();
+  const crewMemberToUpdateId = e.target.parentNode.id;
+  const changedCrewMember = {
+    name: $('#name').val(),
+    teamId: $('#teamId').val(),
+    title: $('#title').val(),
+    photo: $('#photo').val(),
+    bio: $('#bio').val(),
+  };
+  crewMemberData.updateCrewMember(crewMemberToUpdateId, changedCrewMember)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      createCrewMemberCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+const showEditCrewMemberModal = (e) => {
+  e.stopImmediatePropagation();
+  const crewMemberId = e.target.id.split('update-')[1];
+  crewMemberData.getCrewMemberById(crewMemberId)
+    .then((crewMember) => {
+      newCrewMemberDetails(crewMember);
+      $('#exampleModal').modal('show');
+      $('#update-crew').click(updateCrewMemberObj);
+    })
+    .catch((error) => console.error(error));
+};
+
+export default { createCrewMemberCard, displayCrewMembers };
