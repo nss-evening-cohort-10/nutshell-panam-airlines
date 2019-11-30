@@ -74,38 +74,38 @@ const createCrewMemberModal = (crewMember) => {
 const createCrewMemberCard = () => {
   const user = firebase.auth().currentUser;
   crewMemberData.getAllCrewMembers()
-    .then((crews) => {
-      let domString = '<h1 class="crew-heading">FLIGHT CREW</h1>';
+    .then((crewMembers) => {
+      let domString = '<h1 class="crew-heading">FLIGHT CREW MEMBERS</h1>';
       if (user !== null) {
         // eslint-disable-next-line max-len
         domString += '<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" id="create-modal" data-target="#exampleModal" data-whatever="@mdo">Create Employee</button></div>';
       }
       domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
-      crews.forEach((crew) => {
+      crewMembers.forEach((crewMember) => {
         if (user !== null) {
           domString += `
-          <div id="${crew.teamId}" class="card crew-card" style="width: 18rem;">
-          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crew.crewId}"  id="${crew.id}" aria-label="Close">x 
+          <div id="${crewMember.teamId}" class="card crew-card" style="width: 18rem;">
+          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crewMember.crewId}"  id="${crewMember.id}" aria-label="Close">x 
           </button>
-            <img src="${crew.photo}" class="card-img-top crew-image" alt="${crew.name}">
+            <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
             <div class="card-body">
-              <h5 class="card-title">${crew.name}</h5>
-              <p class="card-text">${crew.title}</p>
-              <p class="card-text">${crew.bio}</p>
+              <h5 class="card-title">${crewMember.name}</h5>
+              <p class="card-text">${crewMember.title}</p>
+              <p class="card-text">${crewMember.bio}</p>
             </div>
             <div>
-              <button class="btn btn-primary crew-update" id="update-${crew.id}">Update Employee</button>
+              <button class="btn btn-primary crew-update" id="update-${crewMember.id}">Update Employee</button>
             </div>
           </div>
           `;
         } else {
           domString += `
-          <div id="${crew.teamId}" class="card crew-card" style="width: 18rem;">
-            <img src="${crew.photo}" class="card-img-top crew-image" alt="${crew.name}">
+          <div id="${crewMember.teamId}" class="card crew-card" style="width: 18rem;">
+            <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
             <div class="card-body">
-              <h5 class="card-title">${crew.name}</h5>
-              <p class="card-text">${crew.title}</p>
-              <p class="card-text">${crew.bio}</p>
+              <h5 class="card-title">${crewMember.name}</h5>
+              <p class="card-text">${crewMember.title}</p>
+              <p class="card-text">${crewMember.bio}</p>
             </div>
           </div>
           `;
