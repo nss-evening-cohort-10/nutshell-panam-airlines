@@ -6,7 +6,7 @@ import crewMembers from '../../components/crewMembers/crewMembers';
 import airports from '../../components/Airports/airport';
 import planes from '../../components/Planes/planes';
 import menu from '../../components/Menus/menus';
-
+import flights from '../../components/Flights/flightss';
 
 const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
@@ -22,6 +22,7 @@ const checkLoginStatus = () => {
       airports.buildAirports();
       planes.buildPlanes();
       menu.displayMenu();
+      flights.printFlights();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
