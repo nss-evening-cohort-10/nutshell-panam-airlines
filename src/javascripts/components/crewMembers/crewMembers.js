@@ -161,7 +161,6 @@ const updateCrewMemberObj = (e) => {
     photo: $('#photo').val(),
     bio: $('#bio').val(),
   };
-  console.log(crewMemberToUpdateId, changedCrewMember);
   crewMemberData.updateCrewMember(crewMemberToUpdateId, changedCrewMember)
     .then(() => {
       $('#exampleModal').modal('hide');
