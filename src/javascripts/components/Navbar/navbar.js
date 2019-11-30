@@ -41,7 +41,7 @@ const attachDropdownEvents = () => {
   crewMembers.displayCrewMembers();
   food.displayFood();
   planes.displayPlanes();
-  menu.displayMenu();
+  menu.displayAllMenus();
 };
 
 export default { attachDropdownEvents, attachEvents };
