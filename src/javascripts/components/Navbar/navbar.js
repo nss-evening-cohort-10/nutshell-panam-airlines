@@ -2,7 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import airport from '../Airports/airport';
-import crew from '../crew/crew';
+import crewMembers from '../crewMembers/crewMembers';
 import food from '../foodService/foodService';
 import auth from '../Auth/auth';
 import planes from '../Planes/planes';
@@ -38,7 +38,7 @@ const attachEvents = () => {
 const attachDropdownEvents = () => {
   displayHome();
   airport.displayAirports();
-  crew.displayCrew();
+  crewMembers.displayCrewMembers();
   food.displayFood();
   planes.displayPlanes();
   menu.displayMenu();
