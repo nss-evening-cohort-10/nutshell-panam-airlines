@@ -6,7 +6,7 @@ import crewMembers from '../crewMembers/crewMembers';
 import food from '../foodService/foodService';
 import auth from '../Auth/auth';
 import planes from '../Planes/planes';
-import menu from '../Menus/menus';
+import menu from '../MenusBuilder/menusBuilder';
 
 const displayHome = () => {
   $('#home-link').on('click', () => {
