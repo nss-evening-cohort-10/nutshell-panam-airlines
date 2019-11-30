@@ -1,0 +1,14 @@
+{
+    "jobType1": {
+        "id": "jobType1",
+        "function": "Pilot"
+    },
+    "jobType2": {
+        "id": "jobType2",
+        "function": "Flight Attendant"
+    },
+    "jobType3": {
+        "id": "jobType3",
+        "function": "Air Marshall"
+    }
+}

@@ -1,9 +1,10 @@
 {
   "airports" : "airports",
   "planes" : "planes",
-  "crew" : "crew",
+  "crewMembers" : "crewMembers",
   "crews" : "crewzz",
   "food" : "food",
   "baggage" : "baggage",
-  "menus" : "menus"
+  "menus" : "menus",
+  "jobTypes": "jobTypes"
 }
