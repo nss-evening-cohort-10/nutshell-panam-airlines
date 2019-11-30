@@ -31,7 +31,7 @@ const removeCrewMember = (id) => axios.delete(`${baseUrl}/crew/${id}.json`);
 
 const addNewMember = (crewMember) => axios.post(`${baseUrl}/crew.json`, crewMember);
 
-const updateCrewMember = (crewMemberId, updatedCrewMember) => axios.put(crewMemberId, updatedCrewMember);
+const updateCrewMember = (crewMemberId, updatedCrewMember) => axios.put(`${baseUrl}/crew/${crewMemberId}.json`, updatedCrewMember);
 
 export default {
   getAllCrewMembers,

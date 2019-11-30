@@ -60,9 +60,9 @@ const createCrewMemberModal = (crewMember) => {
             </div>
           </form>
         </div>
-        <div class="modal-footer">
+        <div id="${crewMember.id ? crewMember.id : ''}" class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="create-save" type="button" class="btn btn-primary">Save</button>
+          <button id="${crewMember.id ? 'update-crew' : 'create-save'}" type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@ const createCrewMemberCard = () => {
               <p class="card-text">${crew.bio}</p>
             </div>
             <div>
-              <button class="btn btn-primary crew-delete" id="update-${crew.id}">Update Employee</button>
+              <button class="btn btn-primary crew-update" id="update-${crew.id}">Update Employee</button>
             </div>
           </div>
           `;
@@ -116,7 +116,7 @@ const createCrewMemberCard = () => {
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#create-modal', createCrewMembers);
       // eslint-disable-next-line no-use-before-define
-      $('body').on('click', '.crew-delete', editCrewMember);
+      $('body').on('click', '.crew-update', showEditCrewMemberModal);
     })
     .catch((error) => console.error(error));
 };
@@ -151,14 +151,9 @@ const newCrewMemberDetails = (person) => {
   utilities.printToDom('exampleModal', string);
 };
 
-const editCrewMember = (e) => {
-  const crewMemberId = e.target.id.split('update-')[1];
-  crewMemberData.getCrewMemberById(crewMemberId)
-    .then((crewMember) => {
-      newCrewMemberDetails(crewMember);
-      $('#exampleModal').modal('show');
-    })
-    .catch((error) => console.error(error));
+const updateCrewMemberObj = (e) => {
+  e.stopImmediatePropagation();
+  const crewMemberToUpdateId = e.target.parentNode.id;
   const changedCrewMember = {
     name: $('#name').val(),
     teamId: $('#teamId').val(),
@@ -166,9 +161,23 @@ const editCrewMember = (e) => {
     photo: $('#photo').val(),
     bio: $('#bio').val(),
   };
-  crewMemberData.updateCrewMember(crewMemberId, changedCrewMember)
+  console.log(crewMemberToUpdateId, changedCrewMember);
+  crewMemberData.updateCrewMember(crewMemberToUpdateId, changedCrewMember)
     .then(() => {
+      $('#exampleModal').modal('hide');
       createCrewMemberCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+const showEditCrewMemberModal = (e) => {
+  e.stopImmediatePropagation();
+  const crewMemberId = e.target.id.split('update-')[1];
+  crewMemberData.getCrewMemberById(crewMemberId)
+    .then((crewMember) => {
+      newCrewMemberDetails(crewMember);
+      $('#exampleModal').modal('show');
+      $('#update-crew').click(updateCrewMemberObj);
     })
     .catch((error) => console.error(error));
 };
