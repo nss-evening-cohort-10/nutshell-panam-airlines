@@ -16,3 +16,5 @@ const getAllCrews = () => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
+
+export default { getAllCrews };

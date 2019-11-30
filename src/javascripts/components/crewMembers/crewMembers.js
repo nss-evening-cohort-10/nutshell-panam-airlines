@@ -17,9 +17,10 @@ const deleteCrewMember = (e) => {
 };
 
 const displayCrewMembers = () => {
-  $('#crew-link').on('click', () => {
-    $('#crew').show();
+  $('#crew-member-link').on('click', () => {
+    $('#crewMembers').show();
     $('#airports').hide();
+    $('#crews').hide();
     $('#home').hide();
     $('#foodModule').hide();
     $('#planes').hide();
