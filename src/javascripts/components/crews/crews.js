@@ -23,7 +23,6 @@ const printCrewCards = () => {
   const user = firebase.auth().currentUser;
   crewsData.getAllCrews()
     .then((crews) => {
-      console.log(crews);
       let domString = '<h1 class="crew-heading">FLIGHT CREWS</h1>';
       if (user !== null) {
       // eslint-disable-next-line max-len
@@ -31,18 +30,19 @@ const printCrewCards = () => {
       }
       domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
       crews.forEach((crew) => {
-        crewCrewMembersData.getCrewValuesByCrewId(crew.id);
+        const thisCrewList = crewCrewMembersData.getCrewValuesByCrewId(crew.id);
+        const thisCrewListNames = [];
+        thisCrewList.forEach((tcl) => {
+          const crewListName = tcl.name;
+          thisCrewListNames.push(crewListName);
+        });
+        console.log(thisCrewListNames);
         if (user !== null) {
           domString += `
           <div id="${crew.id}-card" class="card crew-card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">${crew.name}</h5>
-          <p class="card-text">${crew.pilot1}</p>
-          <p class="card-text">${crew.pilot2}</p>
-          <p class="card-text">${crew.fa1}</p>
-          <p class="card-text">${crew.fa2}</p>
-          <p class="card-text">${crew.fa3}</p>
-          <p class="card-text">${crew.am1}</p>
+          <p class="card-text">${thisCrewList}</p>
           </div>
           <div>
           <button class="btn btn-primary crew-update" id="update-${crew.id}">Update Crew</button>
