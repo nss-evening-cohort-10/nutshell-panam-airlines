@@ -1,4 +1,4 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 // import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import flightData from '../../helpers/data/flightData';
@@ -7,25 +7,28 @@ import './flights.scss';
 
 const displayFlights = () => {
   $('#flight-link').on('click', () => {
-    $('#flightModule').show();
     $('#home').hide();
-    $('#crew').hide();
     $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
     $('#planes').hide();
     $('#menu').hide();
-    $('#food').hide();
+    $('#flights').show();
   });
 };
 
 const buildFlightCard = (flight) => {
-  let domString = '<h1 class="text-center">Flights</h1>';
-    <div class="col-4">
-      <div class="card">
-        <p class="card-text">${flight.flightOrigin}<p>
-        <p class="card-text">${flight.flightDestination}<p>
-        <p class="card-text">${flight.planeId}<p>
+  const domString = `
+  <div class="col-4">
+    <div class="card">
+        <div class="card-body">
+        <p class="card-text">Location: ${flight.flightOrigin}</p>
+        <p class="card-text">Destination: ${flight.flightDestination}</p>
+        <p class="card-text">Plane: ${flight.planeId}</p>
       </div>
-    `;
+    </div>
+  </div>
+`;
 
   return domString;
 };
