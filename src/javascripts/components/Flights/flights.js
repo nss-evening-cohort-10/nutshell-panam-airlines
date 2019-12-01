@@ -40,6 +40,7 @@ const printFlights = () => {
       console.log(flights);
       let domString = '<div class="show-header text-center"><h1 class="header">Flights</h1>';
       if (userSignedIn) {
+        // this is not printing
         domString += '<button class="btn btn-primary">Add New Flight</button>';
       }
       domString += '</div>';
