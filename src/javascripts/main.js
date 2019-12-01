@@ -12,12 +12,11 @@ import '../styles/main.scss';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
+  flights.printFlights();
   authData.checkLoginStatus();
   navbar.attachDropdownEvents();
   navbar.attachEvents();
   airports.buildAirports();
   crewMembers.createCrewMemberCard();
-  flights.buildFlightCard();
-  flights.printFlights();
 };
 init();

@@ -6,32 +6,32 @@ import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
 import './flights.scss';
 
 const displayFlights = () => {
-  $('#flight-link').on('click', () => {
+  $('#flights-link').on('click', () => {
+    $('#flights').removeClass('hide');
     $('#home').hide();
     $('#airports').hide();
     $('#crew').hide();
     $('#foodModule').hide();
     $('#planes').hide();
     $('#menu').hide();
-    $('#flights').show();
   });
 };
 
-// const buildFlightCard = (flight) => {
-//   const domString = `
-//   <div class="col-4">
-//     <div class="card">
-//         <div class="card-body">
-//         <p class="card-text">Origin: ${flight.flightOrigin}</p>
-//         <p class="card-text">Destination: ${flight.flightDestination}</p>
-//         <p class="card-text">Plane: ${flight.planeId}</p>
-//       </div>
-//     </div>
-//   </div>
-// `;
+const buildFlightCard = (flight) => {
+  const domString = `
+  <div class="col-4">
+    <div class="card">
+        <div class="card-body">
+        <p class="card-text">Origin: ${flight.flightOrigin}</p>
+        <p class="card-text">Destination: ${flight.flightDestination}</p>
+        <p class="card-text">Plane: ${flight.planeId}</p>
+      </div>
+    </div>
+  </div>
+`;
 
-//   return domString;
-// };
+  return domString;
+};
 
 const printFlights = () => {
   const userSignedIn = firebase.auth().currentUser;
@@ -45,11 +45,12 @@ const printFlights = () => {
       domString += '</div>';
       domString += '<div class="container"><div class="row">';
       flights.forEach((flight) => {
-      // buildFlightCard(flight);
-        domString += flightsCardBuilder.singleFoodCard(flight);
+        buildFlightCard(flight);
+        domString += flightsCardBuilder.singleFlightCard(flight);
       });
 
-      domString += '</div></div>';
+      domString += '</div>';
+      console.log(domString);
       utilities.printToDom('flights', domString);
     })
     .catch((err) => console.error('Error getting flights', err));
