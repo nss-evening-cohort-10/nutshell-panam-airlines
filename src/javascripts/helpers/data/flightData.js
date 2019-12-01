@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 const getAllFlights = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/shows.json`)
+  axios.get(`${baseUrl}/flights.json`)
     .then((response) => {
       const flights = response.data;
       const flightsWithIds = [];
