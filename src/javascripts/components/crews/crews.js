@@ -4,6 +4,8 @@ import './crews.scss';
 
 import utilities from '../../helpers/utilities';
 import crewsData from '../../helpers/data/crewsData';
+import crewCrewMembersData from '../../helpers/data/crewCrewMembersData';
+// import crewMemberData from '../../helpers/data/crewMemberData';
 
 const displayCrews = () => {
   $('#crews-link').on('click', () => {
@@ -21,6 +23,7 @@ const printCrewCards = () => {
   const user = firebase.auth().currentUser;
   crewsData.getAllCrews()
     .then((crews) => {
+      console.log(crews);
       let domString = '<h1 class="crew-heading">FLIGHT CREWS</h1>';
       if (user !== null) {
       // eslint-disable-next-line max-len
@@ -28,6 +31,7 @@ const printCrewCards = () => {
       }
       domString += '<div id="crew-section" class="d-flex flex-wrap text-center offset-2">';
       crews.forEach((crew) => {
+        crewCrewMembersData.getCrewValuesByCrewId(crew.id);
         if (user !== null) {
           domString += `
           <div id="${crew.id}-card" class="card crew-card" style="width: 18rem;">
