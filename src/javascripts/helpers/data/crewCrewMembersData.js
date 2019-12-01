@@ -1,6 +1,6 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
-// import crewMemberData from './crewMemberData';
+import crewMemberData from './crewMemberData';
 // import crewsData from './crewsData';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -17,14 +17,15 @@ const getCrewValuesByCrewId = (crewId) => {
       const airMarshal = datCrew.am1;
       deezCrewMems.push(pilotOne, pilotTwo, flightAttendantOne, flightAttendantTwo, flightAttendantThree, airMarshal);
       console.log(deezCrewMems);
-      // crewMemberData.getAllCrewMembers()
-      // .then((crewMembers) => {
-      //   crewMembers.forEach((crewMember) => {
-      //     if () {
-
-      //     }
-      //   }
-      // )});
+      crewMemberData.getAllCrewMembers()
+        .then((crewMembers) => {
+          const crewMemNames = [];
+          crewMembers.forEach((crewMember) => {
+            if (deezCrewMems.filter(crewMember)) {
+              crewMemNames.push(deezCrewMems.filter(crewMember)
+              console.log(crewMemNames);
+          });
+        });
     });
 };
 
