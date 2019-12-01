@@ -17,4 +17,13 @@ const getAllCrews = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllCrews };
+const getCrewById = (crewId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/crews/${crewId}.json`)
+    .then((response) => {
+      response.data.id = crewId;
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
+
+export default { getAllCrews, getCrewById };
