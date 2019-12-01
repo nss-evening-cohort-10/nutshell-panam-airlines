@@ -21,7 +21,7 @@ const checkLoginStatus = () => {
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();
-      menu.displayAllMenus();
+      menu.displayMenu();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
@@ -30,7 +30,7 @@ const checkLoginStatus = () => {
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();
-      menu.displayAllMenus();
+      menu.displayMenu();
     }
   });
 };
