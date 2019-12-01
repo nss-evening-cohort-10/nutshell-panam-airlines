@@ -1,5 +1,5 @@
 import $ from 'jquery';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import flightData from '../../helpers/data/flightData';
 // import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
@@ -34,11 +34,16 @@ const buildFlightCard = (flight) => {
 };
 
 const printFlights = () => {
+  const userSignedIn = firebase.auth().currentUser;
   flightData.getAllFlights()
     .then((flights) => {
       console.log(flights);
-      let domString = '<h1 class="text-center header">Flight Portal</h1><div class="container"><div class="row">';
-
+      let domString = '<div class="show-header text-center"><h1 class="header">Flights</h1>';
+      if (userSignedIn) {
+        domString += '<button class="btn btn-primary">Add New Flight</button>';
+      }
+      domString += '</div>';
+      domString += '<div class="container"><div class="row">';
       flights.forEach((flight) => {
         domString += buildFlightCard(flight);
       });
