@@ -2,7 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase';
 import utilities from '../../helpers/utilities';
 import flightData from '../../helpers/data/flightData';
-// import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
+import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
 import './flights.scss';
 
 const displayFlights = () => {
@@ -17,21 +17,21 @@ const displayFlights = () => {
   });
 };
 
-const buildFlightCard = (flight) => {
-  const domString = `
-  <div class="col-4">
-    <div class="card">
-        <div class="card-body">
-        <p class="card-text">Location: ${flight.flightOrigin}</p>
-        <p class="card-text">Destination: ${flight.flightDestination}</p>
-        <p class="card-text">Plane: ${flight.planeId}</p>
-      </div>
-    </div>
-  </div>
-`;
+// const buildFlightCard = (flight) => {
+//   const domString = `
+//   <div class="col-4">
+//     <div class="card">
+//         <div class="card-body">
+//         <p class="card-text">Origin: ${flight.flightOrigin}</p>
+//         <p class="card-text">Destination: ${flight.flightDestination}</p>
+//         <p class="card-text">Plane: ${flight.planeId}</p>
+//       </div>
+//     </div>
+//   </div>
+// `;
 
-  return domString;
-};
+//   return domString;
+// };
 
 const printFlights = () => {
   const userSignedIn = firebase.auth().currentUser;
@@ -45,7 +45,8 @@ const printFlights = () => {
       domString += '</div>';
       domString += '<div class="container"><div class="row">';
       flights.forEach((flight) => {
-        domString += buildFlightCard(flight);
+      // buildFlightCard(flight);
+        domString += flightsCardBuilder.singleFoodCard(flight);
       });
 
       domString += '</div></div>';

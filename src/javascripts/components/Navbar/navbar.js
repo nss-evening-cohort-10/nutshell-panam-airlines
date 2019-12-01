@@ -7,11 +7,14 @@ import food from '../foodService/foodService';
 import auth from '../Auth/auth';
 import planes from '../Planes/planes';
 import menu from '../Menus/menus';
+// import flightData from '../../helpers/data/flightData';
+import flights from '../Flights/flights';
 
 const displayHome = () => {
   $('#home-link').on('click', () => {
     $('#home').show();
     $('#airports').hide();
+    $('#flights').show();
     $('#crew').hide();
     $('#foodModule').hide();
     $('#planes').hide();
@@ -38,6 +41,7 @@ const attachEvents = () => {
 const attachDropdownEvents = () => {
   displayHome();
   airport.displayAirports();
+  flights.displayFlights();
   crewMembers.displayCrewMembers();
   food.displayFood();
   planes.displayPlanes();

@@ -20,9 +20,9 @@ const checkLoginStatus = () => {
       crewMembers.createCrewMemberCard();
       food.createFoodCards();
       airports.buildAirports();
+      flights.printFlights();
       planes.buildPlanes();
       menu.displayMenu();
-      flights.printFlights();
     } else {
       // nobody logged in SHOW login button
       loginButton.removeClass('hide');
@@ -30,6 +30,7 @@ const checkLoginStatus = () => {
       crewMembers.createCrewMemberCard();
       food.createFoodCards();
       airports.buildAirports();
+      flights.printFlights();
       planes.buildPlanes();
       menu.displayMenu();
     }

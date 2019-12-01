@@ -2,15 +2,13 @@
   "flight1": {
     "id": "flight1",
     "duration": "7 hours 45 minutes",
-    "flightCrew": "flightCrew1",
     "flightOrigin": "Chicago",
     "flightDestination": "Amesterdam",
     "planeId": "007"
   },
   "flight2": {
-    "id": "flight1",
+    "id": "flight2",
     "duration": "2 hours 27 minutes",
-    "flightCrew": "flightCrew2",
     "flightOrigin": "Nashville",
     "flightDestination": "New York City",
     "planeId": "615"
