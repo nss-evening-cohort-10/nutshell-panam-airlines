@@ -4,6 +4,7 @@
   "crewMembers" : "crewMembers",
   "crews" : "crewzz",
   "food" : "food",
+  "flights": "flights",
   "baggage" : "baggage",
   "menus" : "menus",
   "jobTypes": "jobTypes"
