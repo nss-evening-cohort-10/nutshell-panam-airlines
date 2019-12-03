@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import firebase from 'firebase';
 import $ from 'jquery';
 import './crewMembers.scss';
@@ -41,29 +42,35 @@ const createCrewMemberModal = (crewMember) => {
           <form>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Name:</label>
-              <input type="text" class="form-control" id="name" value="${crewMember.name ? crewMember.name : ''}">
+              <input type="text" class="form-control" id="name" value="${crewMember ? crewMember.name : ''}">
             </div>
             <div class="form-group">
-              <label for="message-text" class="col-form-label">Team ID:</label>
-              <textarea class="form-control" id="teamId">${crewMember.teamId ? crewMember.teamId : ''}</textarea>
+              <label for="message-text" class="col-form-label">Job type:</label>
+              <select class="custom-select" id="jobTypeId">
+                <option ${crewMember ? '' : 'selected'}>Choose job type</option>
+                // eslint-disable-next-line no-nested-ternary
+                <option value="jobType1" ${crewMember ? (crewMember.jobTypeId === 'jobType1' ? 'selected' : '') : ''}>Pilot</option>
+                <option value="jobType2" ${crewMember ? (crewMember.jobTypeId === 'jobType2' ? 'selected' : '') : ''}>Flight attendant</option>
+                <option value="jobType3" ${crewMember ? (crewMember.jobTypeId === 'jobType3' ? 'selected' : '') : ''}>Air marshall</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Title:</label>
-              <textarea class="form-control" id="title">${crewMember.title ? crewMember.title : ''}</textarea>
+              <textarea class="form-control" id="title">${crewMember ? crewMember.title : ''}</textarea>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Photo:</label>
-              <textarea class="form-control" id="photo">${crewMember.photo ? crewMember.photo : ''}</textarea>
+              <textarea class="form-control" id="photo">${crewMember ? crewMember.photo : ''}</textarea>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Bio:</label>
-              <textarea class="form-control" id="bio">${crewMember.bio ? crewMember.bio : ''}</textarea>
+              <textarea class="form-control" id="bio">${crewMember ? crewMember.bio : ''}</textarea>
             </div>
           </form>
         </div>
-        <div id="${crewMember.id ? crewMember.id : ''}" class="modal-footer">
+        <div id="${crewMember ? crewMember.id : ''}" class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="${crewMember.id ? 'update-crew' : 'create-save'}" type="button" class="btn btn-primary">Save</button>
+          <button id="${crewMember ? 'update-crew' : 'create-save'}" type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -84,7 +91,7 @@ const createCrewMemberCard = () => {
       crews.forEach((crew) => {
         if (user !== null) {
           domString += `
-          <div id="${crew.teamId}" class="card crew-card" style="width: 18rem;">
+          <div class="card crew-card" style="width: 18rem;">
           <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crew.crewId}"  id="${crew.id}" aria-label="Close">x 
           </button>
             <img src="${crew.photo}" class="card-img-top crew-image" alt="${crew.name}">
@@ -100,7 +107,7 @@ const createCrewMemberCard = () => {
           `;
         } else {
           domString += `
-          <div id="${crew.teamId}" class="card crew-card" style="width: 18rem;">
+          <div class="card crew-card" style="width: 18rem;">
             <img src="${crew.photo}" class="card-img-top crew-image" alt="${crew.name}">
             <div class="card-body">
               <h5 class="card-title">${crew.name}</h5>
@@ -126,7 +133,7 @@ const addCrewMember = (e) => {
   e.stopImmediatePropagation();
   const crewMember = {
     name: $('#name').val(),
-    teamId: $('#teamId').val(),
+    jobTypeId: $('#jobTypeId').val(),
     title: $('#title').val(),
     photo: $('#photo').val(),
     bio: $('#bio').val(),
@@ -157,7 +164,7 @@ const updateCrewMemberObj = (e) => {
   const crewMemberToUpdateId = e.target.parentNode.id;
   const changedCrewMember = {
     name: $('#name').val(),
-    teamId: $('#teamId').val(),
+    jobTypeId: $('#jobTypeId').val(),
     title: $('#title').val(),
     photo: $('#photo').val(),
     bio: $('#bio').val(),
