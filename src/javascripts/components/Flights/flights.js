@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import firebase from 'firebase';
+import 'firebase/auth';
 import utilities from '../../helpers/utilities';
 import flightData from '../../helpers/data/flightData';
 import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
@@ -19,7 +20,7 @@ const displayFlights = () => {
 
 const buildFlightCard = (flight) => {
   const domString = `
-  <div class="col-4">
+  <div class="col-12">
     <div class="card">
         <div class="card-body">
         <p class="card-text">Origin: ${flight.flightOrigin}</p>
@@ -29,6 +30,17 @@ const buildFlightCard = (flight) => {
     </div>
   </div>
 `;
+
+  flightData.getFlight()
+    .then((flights) => {
+      flights.forEach((flight) => {
+        domString += buildFlightCard.singleFlightCard(flight);
+      });
+      domString += '</div>';
+      utilities.printToDom('flights', domString);
+      // eslint-disable-next-line no-use-before-define
+    })
+    .catch((error) => console.error(error));
 
   return domString;
 };
@@ -56,5 +68,56 @@ const printFlights = () => {
     })
     .catch((err) => console.error('Error getting flights', err));
 };
+
+const addNewFlight = (e) => {
+  e.stopImmediatePropagation();
+  const newFlight = {
+    flightOrigin: $('#flightOrigin').val(),
+    flightDestination: $('#flightDestination').val(),
+    planeId: $('#planeId').val(),
+
+  };
+  flightData.addNewFlight(newFlight)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildFlightCard();
+    })
+    .catch((error) => console.error(error));
+};
+
+// const newFoodDetails = (food) => {
+//   let domString = '';
+//   domString += foodCardBuilder.foodModal(food);
+//   utilities.printToDom('exampleModal', domString);
+//   $('#submit').click(addNewFood);
+// };
+
+
+
+// const addNewFood = (e) => {
+//   e.stopImmediatePropagation();
+//   const newFood = {
+//     name: $('#name').val(),
+//     calsPerServing: $('#calsPerServing').val(),
+//     imageURL: $('#imageURL').val(),
+//     price: $('#price').val(),
+//     menuCategory: $('#menuCategory').val(),
+//   };
+//   foodData.addNewFood(newFood)
+//     .then(() => {
+//       $('#exampleModal').modal('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       createFoodCards();
+//     })
+//     .catch((error) => console.error(error));
+// };
+
+// const newFoodDetails = (food) => {
+//   let domString = '';
+//   domString += foodCardBuilder.foodModal(food);
+//   utilities.printToDom('exampleModal', domString);
+//   $('#submit').click(addNewFood);
+// };
 
 export default { printFlights, displayFlights };

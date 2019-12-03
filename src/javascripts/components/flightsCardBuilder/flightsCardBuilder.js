@@ -6,23 +6,21 @@ const singleFlightCard = (flight) => {
   const user = firebase.auth().currentUser;
   if (user != null) {
     domString += `
-          <div id="${flight.id}" class="card flightCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-             <button class="btn delete-button delete-flight"  id="${flight.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
-             <br>
-             <h5 class="card-title" id="flight">${flight.flightOrigin}</h5>
-              <p>${flight.flightDestination}</p>
-              <p>${flight.planeId}</p>
-              <button type="button" class="btn edit-flight" data-toggle="modal" data-target="#exampleModal" id="${flight.id}" style="background-color: #1c69b1; color: white;">Edit</button>
-          </div>`;
+    <div id="${flight.id}" class="card flightCard card-body text-center" style=" width: 100%; max-width: 100%; height: 100%; margin: 1em;">
+        <button class="btn delete-button delete-flight"  id="${flight.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
+        <br>
+        <Destination: class="card" id="flight">Origin: ${flight.flightOrigin} Destination: ${flight.flightDestination} Flight Number: ${flight.planeId}</p>
+     </div>`;
   } else {
     domString += `
     <div id="${flight.id}" class="card flightCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-    <button class="btn delete-button delete-flight"  id="${flight.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
-    <br>
-    <h5 class="card-title" id="flight">${flight.flightOrigin}</h5>
-     <p>${flight.flightDestination}</p>
-     <p>${flight.planeId}</p>
- </div>`;
+        <button class="btn delete-button delete-flight"  id="${flight.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
+        <br>
+        <h5 class="card-title" id="flight">${flight.flightOrigin}</h5>
+        <p>${flight.flightDestination}</p>
+        <p>${flight.planeId}</p>
+        <button type="button" class="btn edit-flight" data-toggle="modal" data-target="#exampleModal" id="${flight.id}" style="background-color: #1c69b1; color: white;">Edit</button>
+    </div>`;
   }
   return domString;
 };

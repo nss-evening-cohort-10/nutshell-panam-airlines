@@ -42,6 +42,7 @@ const createFoodCards = () => {
 
 const addNewFood = (e) => {
   e.stopImmediatePropagation();
+  // ={} is an object
   const newFood = {
     name: $('#name').val(),
     calsPerServing: $('#calsPerServing').val(),
@@ -50,6 +51,7 @@ const addNewFood = (e) => {
     menuCategory: $('#menuCategory').val(),
   };
   foodData.addNewFood(newFood)
+  // reach out, make sure it's saved at firebase and then hide of the modal
     .then(() => {
       $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
@@ -79,6 +81,7 @@ const updateFoodValues = (e) => {
   foodData.getFoodByID(e.target.id)
     .then((response) => {
       $('#exampleModal').modal('show');
+      // setting up a new property on the object that comes back as id.
       response.id = e.target.id;
       newFoodDetails(response);
       // eslint-disable-next-line no-use-before-define
