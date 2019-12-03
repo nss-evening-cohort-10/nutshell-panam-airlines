@@ -6,21 +6,9 @@ import flightData from '../../helpers/data/flightData';
 import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
 import './flights.scss';
 
-const displayFlights = () => {
-  $('#flights-link').on('click', () => {
-    $('#flights').removeClass('hide');
-    $('#home').hide();
-    $('#airports').hide();
-    $('#crew').hide();
-    $('#foodModule').hide();
-    $('#planes').hide();
-    $('#menu').hide();
-  });
-};
-
 const buildFlightCard = (flight) => {
   const domString = `
-  <div class="col-12">
+  <div class="col-md-12 no-gutters">
     <div class="card">
         <div class="card-body">
         <p class="card-text">Origin: ${flight.flightOrigin}</p>
@@ -34,24 +22,24 @@ const buildFlightCard = (flight) => {
   return domString;
 };
 
-const printFlights = () => {
-  let domString = '<div class="show-header text-center"><h1 class="header">Flights</h1>';
+const newFlightBuilder = () => {
+  let domString = '<div class="container show-header text-center"><h1 class="header">Flights</h1>';
   const userSignedIn = firebase.auth().currentUser;
   if (userSignedIn != null) {
     // this is not printing
     // eslint-disable-next-line max-len
-    domString += '<div class="text-center"><button type="button" id="add-new-flight" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Flight</button></div>';
+    domString += '<div class="col"><button type="button" id="add-new-flight" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Flight</button></div>';
   }
+  domString += '<div id="flight-cards" class="d-flex text-center">';
   flightData.getAllFlights()
     .then((flights) => {
       // console.log(flights);
-      domString += '</div>';
-      domString += '<div class="container"><div class="row">';
       flights.forEach((flight) => {
-        buildFlightCard(flight);
-        domString += flightsCardBuilder.singleFlightCard(flight);
+        flightsCardBuilder.singleFlightCard(flight);
+        domString += buildFlightCard(flight);
+        domString += '</div>';
       });
-
+      // h1 close
       domString += '</div>';
       // console.log(domString);
       utilities.printToDom('flights', domString);
@@ -85,4 +73,17 @@ const newFlightDetails = (flight) => {
   $('#submit').click(addNewFlight);
 };
 
-export default { printFlights, displayFlights };
+const displayFlights = () => {
+  $('#flights-link').on('click', () => {
+    $('#flights').removeClass('hide');
+    $('#home').hide();
+    $('#airports').hide();
+    $('#crew').hide();
+    $('#foodModule').hide();
+    $('#planes').hide();
+    $('#menu').hide();
+    newFlightBuilder();
+  });
+};
+
+export default { newFlightBuilder, displayFlights };

@@ -3,8 +3,8 @@ import firebase from 'firebase';
 
 const singleFlightCard = (flight) => {
   let domString = '';
-  const user = firebase.auth().currentUser;
-  if (user != null) {
+  const userSignedIn = firebase.auth().currentUser;
+  if (userSignedIn != null) {
     domString += `
     <div id="${flight.id}" class="card flightCard card-body text-center" style=" width: 100%; max-width: 100%; height: 100%; margin: 1em;">
         <button class="btn delete-button delete-flight"  id="${flight.id}" style="margin-right:0; margin-left: auto; width: 2em; color:#1c69b1; font-weight:bold;">X</button>
