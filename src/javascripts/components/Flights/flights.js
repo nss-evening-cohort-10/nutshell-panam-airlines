@@ -6,34 +6,16 @@ import flightData from '../../helpers/data/flightData';
 import flightsCardBuilder from '../flightsCardBuilder/flightsCardBuilder';
 import './flights.scss';
 
-const buildFlightCard = (flight) => {
-  const domString = `
-  <div class="col-md-12 no-gutters">
-    <div class="card">
-        <div class="card-body">
-        <p class="card-text">Origin: ${flight.flightOrigin}</p>
-        <p class="card-text">Destination: ${flight.flightDestination}</p>
-        <p class="card-text">Plane: ${flight.planeId}</p>
-      </div>
-    </div>
-  </div>
-`;
-
-  return domString;
-};
-
 const newFlightBuilder = () => {
   let domString = '<div class="container show-header text-center"><h1 class="header">Flights</h1>';
   const userSignedIn = firebase.auth().currentUser;
   if (userSignedIn != null) {
-    // this is not printing
     // eslint-disable-next-line max-len
     domString += '<div class="col"><button type="button" id="add-new-flight" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Flight</button></div>';
   }
   domString += '<div id="flight-cards" class="d-flex text-center">';
   flightData.getAllFlights()
     .then((flights) => {
-      // console.log(flights);
       flights.forEach((flight) => {
         domString += flightsCardBuilder.singleFlightCard(flight);
 
@@ -51,23 +33,23 @@ const newFlightBuilder = () => {
 const addNewFlight = (e) => {
   e.stopImmediatePropagation();
   const newFlight = {
-    flightOrigin: $('#flightOrigin').val(),
-    flightDestination: $('#flightDestination').val(),
+    flightOrigin: $('#origin').val(),
+    flightDestination: $('#destination').val(),
     planeId: $('#planeId').val(),
-
   };
+
   flightData.addNewFlight(newFlight)
     .then(() => {
       $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
-      buildFlightCard();
+      newFlightBuilder();
     })
     .catch((error) => console.error(error));
 };
 
 const newFlightDetails = (flight) => {
   let domString = '';
-  domString += buildFlightCard(flight);
+  domString += flightsCardBuilder.flightModal(flight);
   utilities.printToDom('exampleModal', domString);
   $('#submit').click(addNewFlight);
 };

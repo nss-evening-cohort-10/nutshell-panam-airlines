@@ -16,4 +16,6 @@ const getAllFlights = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getAllFlights };
+const addNewFlight = (flight) => axios.post(`${baseUrl}/flights.json`, flight);
+
+export default { getAllFlights, addNewFlight };

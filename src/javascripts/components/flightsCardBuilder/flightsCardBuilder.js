@@ -43,7 +43,7 @@ const flightModal = (flight) => {
           </div>
           <div class="form-group">
             <label for="destination" class="col-form-label">Destination</label>
-            <input type="text" class="form-control" id="destinatior" value="${flight.flightDestination ? flight.flightDestination : ''}"></input>
+            <input type="text" class="form-control" id="destination" value="${flight.flightDestination ? flight.flightDestination : ''}"></input>
           </div>
           <div class="form-group">
             <label for="planeId" class="col-form-label">Plane Id</label>
