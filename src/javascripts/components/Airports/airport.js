@@ -89,8 +89,7 @@ const buildAirports = () => {
         // eslint-disable-next-line max-len
         domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
       }
-      domString += '<div class="d-flex flex-wrap text-center">';
-      // airports.forEach((airport) => {
+      domString += '<div class="container">';
       // eslint-disable-next-line no-use-before-define
       domString += AirportsBuilder.createAirportCard(airports);
       domString += '</div>';
