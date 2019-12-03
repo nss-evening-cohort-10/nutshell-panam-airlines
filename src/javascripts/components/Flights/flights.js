@@ -35,13 +35,12 @@ const newFlightBuilder = () => {
     .then((flights) => {
       // console.log(flights);
       flights.forEach((flight) => {
-        flightsCardBuilder.singleFlightCard(flight);
-        domString += buildFlightCard(flight);
+        domString += flightsCardBuilder.singleFlightCard(flight);
+
         domString += '</div>';
       });
       // h1 close
       domString += '</div>';
-      // console.log(domString);
       utilities.printToDom('flights', domString);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#add-new-flight', newFlightDetails);
