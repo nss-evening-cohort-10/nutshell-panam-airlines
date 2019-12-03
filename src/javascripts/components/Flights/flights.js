@@ -37,7 +37,6 @@ const printFlights = () => {
   const userSignedIn = firebase.auth().currentUser;
   flightData.getAllFlights()
     .then((flights) => {
-      console.log(flights);
       let domString = '<div class="show-header text-center"><h1 class="header">Flights</h1>';
       if (userSignedIn) {
         // this is not printing
@@ -51,7 +50,6 @@ const printFlights = () => {
       });
 
       domString += '</div>';
-      console.log(domString);
       utilities.printToDom('flights', domString);
     })
     .catch((err) => console.error('Error getting flights', err));

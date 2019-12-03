@@ -93,7 +93,7 @@ const createCrewMemberCard = () => {
         if (user !== null) {
           domString += `
           <div class="card crew-card" style="width: 18rem;">
-          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crew.crewId}"  id="${crew.id}" aria-label="Close">x 
+          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crewMember.id}"  id="${crewMember.id}" aria-label="Close">x 
           </button>
             <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
             <div class="card-body">
@@ -108,13 +108,8 @@ const createCrewMemberCard = () => {
           `;
         } else {
           domString += `
-<<<<<<< HEAD
           <div id="${crewMember.teamId}" class="card crew-card" style="width: 18rem;">
             <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
-=======
-          <div class="card crew-card" style="width: 18rem;">
-            <img src="${crew.photo}" class="card-img-top crew-image" alt="${crew.name}">
->>>>>>> master
             <div class="card-body">
               <h5 class="card-title">${crewMember.name}</h5>
               <p class="card-text">${crewMember.title}</p>
