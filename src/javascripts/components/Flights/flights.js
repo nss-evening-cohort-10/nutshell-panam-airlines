@@ -67,7 +67,7 @@ const addNewFlight = (e) => {
 
 const newFlightDetails = (flight) => {
   let domString = '';
-  domString += buildFlightCard.flights(flight);
+  domString += buildFlightCard(flight);
   utilities.printToDom('exampleModal', domString);
   $('#submit').click(addNewFlight);
 };
