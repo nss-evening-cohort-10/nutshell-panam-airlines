@@ -46,7 +46,7 @@ const createCrewMemberModal = (crewMember, jobTypes) => {
             </div>
             <div class="form-group">
               <label for="jobTypeId" class="col-form-label">Job type:</label>
-              <select class="custom-select" id="jobTypeId">
+              <select class="form-control" id="jobTypeId">
                 <option ${crewMember ? '' : 'selected'}>Choose job type</option>
     `;
   if (crewMember && jobTypes) {
