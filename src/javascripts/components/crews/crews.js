@@ -12,15 +12,15 @@ const createCrewCards = (crewArray) => {
   for (let i = 0; i < crewArray.length; i += 1) {
     const crewObject = crewArray[i];
     domString += `
-      <div class="card crews-card" style="width: 18rem;">
+      <div class="card crews-card d-flex text-center" style="width: 18rem;">
       <div class="card-body">
-      <h5class="card-title">${crewObject.name}</h5class="card-title">
-      <p class="card-text">${crewObject.pilot1.name}</p>
-      <p class="card-text">${crewObject.pilot2.name}</p>
-      <p class="card-text">${crewObject.fa1.name}</p>
-      <p class="card-text">${crewObject.fa2.name}</p>
-      <p class="card-text">${crewObject.fa3.name}</p>
-      <p class="card-text">${crewObject.am1.name}</p>
+      <h5 class="card-title">${crewObject.name}</h5>
+      <p class="card-text">Pilot 1: ${crewObject.pilot1.name}</p>
+      <p class="card-text">Pilot 2: ${crewObject.pilot2.name}</p>
+      <p class="card-text">Flight Attendant 1: ${crewObject.fa1.name}</p>
+      <p class="card-text">Flight Attendant 2: ${crewObject.fa2.name}</p>
+      <p class="card-text">Flight Attendant 3: ${crewObject.fa3.name}</p>
+      <p class="card-text">Air Marshal: ${crewObject.am1.name}</p>
       </div>
       <div>
       <button class="btn btn-primary crews-update" id="update-${crewObject.id}">Update Crew</button>
@@ -28,7 +28,7 @@ const createCrewCards = (crewArray) => {
       </div>`;
   }
   console.log(domString);
-  utilities.printToDom('crews', domString);
+  utilities.printToDom('crews-container', domString);
 };
 
 const printCrewCards = () => {
