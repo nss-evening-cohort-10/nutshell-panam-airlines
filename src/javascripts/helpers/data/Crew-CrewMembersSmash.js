@@ -22,4 +22,28 @@ const getCrewMembersByCrewId = (crewId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getCrewMembersByCrewId };
+const getAllCrewsWithMembers = () => new Promise((resolve, reject) => {
+  crewsData.getAllCrews()
+    .then((allTheCrews) => {
+      console.log(allTheCrews);
+      crewMemberData.getAllCrewMembers()
+        .then((allCrewMems) => {
+          const allMyCrews = [];
+          allTheCrews.forEach((crew) => {
+            const crewWithMembers = crew;
+            Object.keys(crew).forEach((crewMemberPosition) => {
+              if (crewMemberPosition !== 'name') {
+                const crewMem = allCrewMems.find((x) => x.id === crew[crewMemberPosition]);
+                crewWithMembers[crewMemberPosition] = crewMem;
+                console.log(crewMem);
+              }
+            });
+            allMyCrews.push(crewWithMembers);
+          });
+          resolve(allMyCrews);
+        });
+    })
+    .catch((error) => reject(error));
+});
+
+export default { getCrewMembersByCrewId, getAllCrewsWithMembers };
