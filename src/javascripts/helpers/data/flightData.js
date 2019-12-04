@@ -6,7 +6,6 @@ const getAllFlights = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/flights.json`)
     .then((response) => {
       const flights = response.data;
-      console.log(flights);
       const flightsWithIds = [];
       Object.keys(flights).forEach((fbId) => {
         flights[fbId].id = fbId;

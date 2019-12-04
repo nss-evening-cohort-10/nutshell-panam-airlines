@@ -3,13 +3,7 @@ import firebase from 'firebase';
 
 const createAirportCard = (airports) => {
   const user = firebase.auth().currentUser;
-  // airportsData.getAllAirports()
-  //   .then((airports) => {
-  let domString = '';
-  if (user != null) {
-    // domString += '<button type="button" class="add-button btn btn-outline-info ml-5"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Airport</button>';
-  }
-  domString += '<div id="airports-section" class="d-flex flex-wrap text-center offset-2">';
+  let domString = '<div id="airports-section" class="d-flex flex-wrap justify-content-center row">';
   airports.forEach((airport) => {
     if (user != null) {
       domString += `
@@ -34,13 +28,10 @@ const createAirportCard = (airports) => {
         </div>
         `;
     }
-    domString += '</div>';
-    // utilities.printToDom('airports', domString);
-    // $('.delete-button').on('click', deleteAirport);
-    // $('.add-button').on('click', newAirportInfo);
   });
   return domString;
 };
+
 const AirportModal = (airport) => {
   const domString = `<div class="modal-dialog" role="document">
     <div class="modal-content">

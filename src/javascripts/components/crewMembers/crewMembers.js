@@ -29,8 +29,8 @@ const displayCrewMembers = () => {
   });
 };
 
-const createCrewMemberModal = (crewMember) => {
-  const domString = `
+const createCrewMemberModal = (crewMember, jobTypes) => {
+  let domString = `
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,14 +46,20 @@ const createCrewMemberModal = (crewMember) => {
               <input type="text" class="form-control" id="name" value="${crewMember ? crewMember.name : ''}">
             </div>
             <div class="form-group">
-              <label for="message-text" class="col-form-label">Job type:</label>
-              <select class="custom-select" id="jobTypeId">
+              <label for="jobTypeId" class="col-form-label">Job type:</label>
+              <select class="form-control" id="jobTypeId">
                 <option ${crewMember ? '' : 'selected'}>Choose job type</option>
-                // eslint-disable-next-line no-nested-ternary
-                <option value="jobType1" ${crewMember ? (crewMember.jobTypeId === 'jobType1' ? 'selected' : '') : ''}>Pilot</option>
-                <option value="jobType2" ${crewMember ? (crewMember.jobTypeId === 'jobType2' ? 'selected' : '') : ''}>Flight attendant</option>
-                <option value="jobType3" ${crewMember ? (crewMember.jobTypeId === 'jobType3' ? 'selected' : '') : ''}>Air marshall</option>
-              </select>
+    `;
+  if (crewMember && jobTypes) {
+    jobTypes.forEach((jobType) => {
+      domString += `<option value="${jobType.id}" ${crewMember.jobTypeId === jobType.id ? 'selected' : ''}>${jobType.function}</option>`;
+    });
+  } else if (jobTypes) {
+    jobTypes.forEach((jobType) => {
+      domString += `<option value="${jobType.id}">${jobType.function}</option>`;
+    });
+  }
+  domString += `</select>
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Title:</label>
@@ -108,7 +114,7 @@ const createCrewMemberCard = () => {
           `;
         } else {
           domString += `
-          <div id="${crewMember.teamId}" class="card crew-card" style="width: 18rem;">
+          <div class="card crew-card" style="width: 18rem;">
             <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
             <div class="card-body">
               <h5 class="card-title">${crewMember.name}</h5>
@@ -147,17 +153,26 @@ const addCrewMember = (e) => {
     .catch((error) => console.error(error));
 };
 
-const createCrewMembers = () => {
-  let domString = '';
-  domString += createCrewMemberModal();
-  utilities.printToDom('exampleModal', domString);
-  $('#create-save').click(addCrewMember);
+const createCrewMembers = (e) => {
+  e.stopImmediatePropagation();
+  crewMemberData.getAllJobTypes()
+    .then((jobTypes) => {
+      let domString = '';
+      domString += createCrewMemberModal({}, jobTypes);
+      utilities.printToDom('exampleModal', domString);
+      $('#create-save').click(addCrewMember);
+    })
+    .catch((error) => console.error(error));
 };
 
 const newCrewMemberDetails = (person) => {
-  let string = '';
-  string += createCrewMemberModal(person);
-  utilities.printToDom('exampleModal', string);
+  crewMemberData.getAllJobTypes()
+    .then((jobTypes) => {
+      let string = '';
+      string += createCrewMemberModal(person, jobTypes);
+      utilities.printToDom('exampleModal', string);
+    })
+    .catch((error) => console.error(error));
 };
 
 const updateCrewMemberObj = (e) => {
