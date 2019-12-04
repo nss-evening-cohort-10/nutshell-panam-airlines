@@ -1,34 +1,37 @@
 import './menusBuilder.scss';
 import firebase from 'firebase';
+import menuData from '../../helpers/data/menuData';
+import utilities from '../../helpers/utilities';
 
-const displayAllMenus = (menu) => {
-  let domString = '';
+const displayAllMenus = () => {
+  let domString = '<h1 class="text-center">Menus</h1>';
   const user = firebase.auth().currentUser;
-  if (user != null) {
-    domString += `<div id="${menu.id}" class="row">
-      <div class="col-sm-6">
-      <div class="card menuCard" style="width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-      < div class="card-body">
-      <h5 class="card-title"id="menu">${menu.name}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Edit</>
-      <a href="#" class="card-link">Delete</a>
-      </>
-    </div>
-    </div>
-    </div>`;
-  } else {
-    domString += `
-        <div id="${menu.id}" class="card foodCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-           <img src="${menu.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
-           <br>
-           <h5 class="card-title" id="food">${menu.name}</h5>
-            <p>${menu.price}</p>
-            <p>${menu.calsPerServing} Cals</p>
-            <p>Menu Category: ${menu.menuCategory}</p>
-        </div>`;
-  }
-  return domString;
+  menuData.getAllMenus()
+    .then((menus) => {
+      if (user != null) {
+        // eslint-disable-next-line max-len
+        domString += '<div class="text-center"><button type="button" id="add-new-menu" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Menu</button></div>';
+      }
+      menus.forEach((menu) => {
+        domString = '';
+        domString += `<div id="${menu.id}" class="row">
+        <div class="col-sm-6">
+        <div class="card menuCard" style="width: 20em; max-width: 500px; height: 100%; margin: 2em;">
+        <div class="card-body">
+          <h5 class="card-title"id="menu">${menu.name}</h5>
+            <p>${menu.foodItemId1}</p>
+            <p>${menu.foodItemId2}</p>
+            <p>${menu.foodItemId3}</p>
+            <p>${menu.foodItemId3}</p>`;
+        if (user != null) {
+          domString += `<a href="#" class="card-link-edit">Edit</>
+          <a href="#" class="card-link-delete">Delete</a>`;
+        }
+        domString += '</></div></div></div>';
+      });
+      utilities.printToDom('menu', domString);
+    })
+    .catch((error) => console.error(error));
 };
 
 // const menuModal = (menu) => {

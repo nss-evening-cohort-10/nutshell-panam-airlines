@@ -2,8 +2,7 @@ import $ from 'jquery';
 // import firebase from 'firebase';
 import './menus.scss';
 // import utilities from '../../helpers/utilities';
-// import menuData from '../../helpers/data/menuData';
-// import menuDisplay from '../MenusBuilder/menusBuilder';
+import menuDisplay from '../MenusBuilder/menusBuilder';
 
 const displayMenu = () => {
   $('#menu-link').on('click', () => {
@@ -12,7 +11,9 @@ const displayMenu = () => {
     $('#crew').hide();
     $('#airports').hide();
     $('#planes').hide();
+    $('#flights').hide();
     $('#menu').show();
+    menuDisplay.displayAllMenus();
   });
 };
 
