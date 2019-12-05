@@ -6,6 +6,8 @@ import crewMembers from '../../components/crewMembers/crewMembers';
 import airports from '../../components/Airports/airport';
 import planes from '../../components/Planes/planes';
 import menuBuilder from '../../components/MenusBuilder/menusBuilder';
+import crews from '../../components/crews/crews';
+
 
 const loginButton = $('#auth');
 const logoutButton = $('#navbar-button-logout');
@@ -17,6 +19,7 @@ const checkLoginStatus = () => {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
       crewMembers.createCrewMemberCard();
+      crews.printCrewCards();
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();
@@ -26,6 +29,7 @@ const checkLoginStatus = () => {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
       crewMembers.createCrewMemberCard();
+      crews.printCrewCards();
       food.createFoodCards();
       airports.buildAirports();
       planes.buildPlanes();

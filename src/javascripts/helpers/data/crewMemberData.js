@@ -6,13 +6,13 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 const getAllCrewMembers = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/crewMembers.json`)
     .then((response) => {
-      const demCrews = response.data;
-      const crews = [];
-      Object.keys(demCrews).forEach((fbId) => {
-        demCrews[fbId].id = fbId;
-        crews.push(demCrews[fbId]);
+      const demCrewMembers = response.data;
+      const crewMembers = [];
+      Object.keys(demCrewMembers).forEach((fbId) => {
+        demCrewMembers[fbId].id = fbId;
+        crewMembers.push(demCrewMembers[fbId]);
       });
-      resolve(crews);
+      resolve(crewMembers);
     })
     .catch((error) => reject(error));
 });

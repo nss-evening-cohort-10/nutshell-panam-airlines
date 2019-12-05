@@ -18,9 +18,10 @@ const deleteCrewMember = (e) => {
 };
 
 const displayCrewMembers = () => {
-  $('#crew-link').on('click', () => {
-    $('#crew').show();
+  $('#crew-member-link').on('click', () => {
+    $('#crewMembers').show();
     $('#airports').hide();
+    $('#crews').hide();
     $('#home').hide();
     $('#foodModule').hide();
     $('#planes').hide();
@@ -88,7 +89,7 @@ const createCrewMemberCard = () => {
   const user = firebase.auth().currentUser;
   crewMemberData.getAllCrewMembers()
     .then((crewMembers) => {
-      let domString = '<h1 class="crew-heading">FLIGHT CREW</h1>';
+      let domString = '<h1 class="crew-heading">FLIGHT CREW MEMBERS</h1>';
       if (user !== null) {
         // eslint-disable-next-line max-len
         domString += '<div class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" id="create-modal" data-target="#exampleModal" data-whatever="@mdo">Create Employee</button></div>';
@@ -98,7 +99,7 @@ const createCrewMemberCard = () => {
         if (user !== null) {
           domString += `
           <div class="card crew-card" style="width: 18rem;">
-          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crewMember.crewId}"  id="${crewMember.id}" aria-label="Close">x 
+          <button type="button" class="close-crewCard d-flex justify-content-end" data-boardID="${crewMember.id}"  id="${crewMember.id}" aria-label="Close">x 
           </button>
             <img src="${crewMember.photo}" class="card-img-top crew-image" alt="${crewMember.name}">
             <div class="card-body">
@@ -125,7 +126,7 @@ const createCrewMemberCard = () => {
         }
       });
       domString += '</div>';
-      utilities.printToDom('crew', domString);
+      utilities.printToDom('crewMembers', domString);
       $('#crew').on('click', '.close-crewCard', deleteCrewMember);
       // eslint-disable-next-line no-use-before-define
       $(document.body).on('click', '#create-modal', createCrewMembers);
