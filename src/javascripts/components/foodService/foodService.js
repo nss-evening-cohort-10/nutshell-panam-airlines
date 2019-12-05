@@ -21,6 +21,7 @@ const createFoodCards = () => {
   let domString = '<h1 class="text-center">Food Service</h1>';
   const user = firebase.auth().currentUser;
   if (user != null) {
+    // eslint-disable-next-line max-len
     domString += '<div class="text-center"><button type="button" id="add-new-food" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Food</button></div>';
   }
   domString += '<div id="foodDivs" class="d-flex flex-wrap">';

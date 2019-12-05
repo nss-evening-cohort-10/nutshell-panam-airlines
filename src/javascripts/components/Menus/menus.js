@@ -1,34 +1,110 @@
+import $ from 'jquery';
+// import firebase from 'firebase';
 import './menus.scss';
-import firebase from 'firebase';
+// import utilities from '../../helpers/utilities';
+import menuDisplay from '../MenusBuilder/menusBuilder';
 
-const displayMenu = (menu) => {
-  let domString = '';
-  const user = firebase.auth().currentUser;
-  if (user != null) {
-    domString += `<div id="${menu.id}" class="row">
-      <div class="col-sm-6">
-      <div class="card menuCard" style="width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-      < div class="card-body">
-      <h5 class="card-title"id="menu">${menu.name}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</>
-      <a href="#" class="card-link">Another link</a>
-      </>
-    </div>
-    </div>
-    </div>`;
-  } else {
-    domString += `
-        <div id="${menu.id}" class="card foodCard card-body text-center" style=" width: 20em; max-width: 500px; height: 100%; margin: 2em;">
-           <img src="${menu.imageURL}" class="card-img-top" style="width: 100%; height: auto;" alt="..."/>
-           <br>
-           <h5 class="card-title" id="food">${menu.name}</h5>
-            <p>${menu.price}</p>
-            <p>${menu.calsPerServing} Cals</p>
-            <p>Menu Category: ${menu.menuCategory}</p>
-        </div>`;
-  }
-  return domString;
+const displayMenu = () => {
+  $('#menu-link').on('click', () => {
+    $('#foodModule').hide();
+    $('#home').hide();
+    $('#crew').hide();
+    $('#airports').hide();
+    $('#planes').hide();
+    $('#flights').hide();
+    $('#menu').show();
+    menuDisplay.displayAllMenus();
+  });
 };
+
+// const createMenuCards = () => {
+//   let domString = '<h1 class="text-center">Menus</h1>';
+//   const user = firebase.auth().currentUser;
+//   if (user != null) {
+// eslint-disable-next-line max-len
+//     domString += '<div class="text-center"><button type="button" id="add-new-menu" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Menu</button></div>';
+//   }
+//   domString += '<div id="menuDivs" class="d-flex flex-wrap">';
+//   menuData.getMenu()
+//     .then((menus) => {
+//       menus.forEach((menu) => {
+//         domString += menuDisplay.displayAllMenus(menu);
+//       });
+//       domString += '</div>';
+//       utilities.printToDom('menuModule', domString);
+//       // eslint-disable-next-line no-use-before-define
+//       $(document.body).on('click', '#add-new-menu', newMenuDetails);
+//       // eslint-disable-next-line no-use-before-define
+//       $(document.body).on('click', '.delete-menu', deleteMenu);
+//       // eslint-disable-next-line no-use-before-define
+//       $(document.body).on('click', '.edit-menu', updateMenuValues);
+//     })
+//     .catch((error) => console.error(error));
+// };
+
+// const addNewMenu = (e) => {
+//   e.stopImmediatePropagation();
+//   const newMenu = {
+//     name: $('#name').val(),
+//     calsPerServing: $('#calsPerServing').val(),
+//     imageURL: $('#imageURL').val(),
+//     price: $('#price').val(),
+//     menuCategory: $('#menuCategory').val(),
+//   };
+//   menuData.addNewMenu(newMenu)
+//     .then(() => {
+//       $('#exampleModal').modal('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       createMenuCards();
+//     })
+//     .catch((error) => console.error(error));
+// };
+
+// const newMenuDetails = (menu) => {
+//   let domString = '';
+//   domString += menuDisplay.foodModal(menu);
+//   utilities.printToDom('exampleModal', domString);
+//   $('#submit').click(addNewMenu);
+// };
+
+// const deleteMenu = (e) => {
+//   e.preventDefault();
+//   menuData.deleteMenu(e.target.id)
+//     .then(() => {
+//     // eslint-disable-next-line no-use-before-define
+//       createMenuCards();
+//     })
+//     .catch((error) => console.error(error));
+// };
+
+// const updateMenuValues = (e) => {
+//   menuData.getMenuByID(e.target.id)
+//     .then((response) => {
+//       $('#exampleModal').modal('show');
+//       response.id = e.target.id;
+//       newMenuDetails(response);
+//       // eslint-disable-next-line no-use-before-define
+//       $('#update').click(editedMenu);
+//     });
+// };
+
+// const editedMenu = (e) => {
+//   e.stopImmediatePropagation();
+//   const editedMenuId = e.target.parentNode.id;
+//   const updatedMenu = {
+//     name: $('#name').val(),
+//     calsPerServing: $('#calsPerServing').val(),
+//     imageURL: $('#imageURL').val(),
+//     price: $('#price').val(),
+//     menuCategory: $('#menuCategory').val(),
+//   };
+//   menuData.editMenu(editedMenuId, updatedMenu)
+//     .then(() => {
+//       $('#exampleModal').modal('hide');
+//       // eslint-disable-next-line no-use-before-define
+//       createMenuCards();
+//     })
+//     .catch((error) => console.error(error));
+// };
 
 export default { displayMenu };

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "nutshell-panam-part2",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -18,4 +18,18 @@ const menusDataByFlightId = (flightId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { menusDataByFlightId };
+const getAllMenus = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/menus.json`)
+    .then((response) => {
+      const demMenus = response.data;
+      const menus = [];
+      Object.keys(demMenus).forEach((mnId) => {
+        demMenus[mnId].id = mnId;
+        menus.push(demMenus[mnId]);
+      });
+      resolve(menus);
+    })
+    .catch((error) => reject(error));
+});
+
+export default { menusDataByFlightId, getAllMenus };

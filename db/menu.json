@@ -27,12 +27,16 @@
     "name": "Snack Menu",
    "isLong": "false",
    "foodItemId1": "food9",
-   "foodItemId2": "food11"
+   "foodItemId2": "food11",
+   "foodItemId3": "food10",
+   "foodItemId4": "food12"
    },
    "menu5": {
     "name": "Alternate Snack Menu",
    "isLong": "false",
    "foodItemId1": "food10",
-   "foodItemId2": "food12"
+   "foodItemId2": "food12",
+   "foodItemId3": "food10",
+   "foodItemId4": "food12"
    }
 }
