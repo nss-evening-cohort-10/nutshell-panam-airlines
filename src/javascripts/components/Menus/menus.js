@@ -21,6 +21,7 @@ const displayMenu = () => {
 //   let domString = '<h1 class="text-center">Menus</h1>';
 //   const user = firebase.auth().currentUser;
 //   if (user != null) {
+// eslint-disable-next-line max-len
 //     domString += '<div class="text-center"><button type="button" id="add-new-menu" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Menu</button></div>';
 //   }
 //   domString += '<div id="menuDivs" class="d-flex flex-wrap">';

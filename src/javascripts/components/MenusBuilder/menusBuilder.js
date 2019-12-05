@@ -4,17 +4,19 @@ import menuData from '../../helpers/data/menuData';
 import utilities from '../../helpers/utilities';
 
 const displayAllMenus = () => {
-  let domString = '<h1 class="text-center">Menus</h1>';
   const user = firebase.auth().currentUser;
   menuData.getAllMenus()
     .then((menus) => {
+      let domString = '<h1 class="text-center">Menus</h1>';
       if (user != null) {
         // eslint-disable-next-line max-len
         domString += '<div class="text-center"><button type="button" id="add-new-menu" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="margin-left: 10px; color: white;">Add New Menu</button></div>';
       }
+      domString += '<div id="menu-section" class="d-flex flex-wrap text-center offset-2">';
       menus.forEach((menu) => {
-        domString = '';
-        domString += `<div id="${menu.id}" class="row">
+        if (user !== null) {
+          domString += `
+          <div id="${menu.id}" class="row">
         <div class="col-sm-6">
         <div class="card menuCard" style="width: 20em; max-width: 500px; height: 100%; margin: 2em;">
         <div class="card-body">
@@ -23,12 +25,24 @@ const displayAllMenus = () => {
             <p>${menu.foodItemId2}</p>
             <p>${menu.foodItemId3}</p>
             <p>${menu.foodItemId3}</p>`;
-        if (user != null) {
           domString += `<a href="#" class="card-link-edit">Edit</>
           <a href="#" class="card-link-delete">Delete</a>`;
+          domString += '</div></div></div>';
+        } else {
+          domString += `
+          <div id="${menu.id}" class="row">
+        <div class="col-sm-6">
+        <div class="card menuCard" style="width: 20em; max-width: 500px; height: 100%; margin: 2em;">
+        <div class="card-body">
+          <h5 class="card-title"id="menu">${menu.name}</h5>
+            <p>${menu.foodItemId1}</p>
+            <p>${menu.foodItemId2}</p>
+            <p>${menu.foodItemId3}</p>
+            <p>${menu.foodItemId3}</p>`;
+          domString += '</div></div></div>';
         }
-        domString += '</></div></div></div>';
       });
+      domString += '</div>';
       utilities.printToDom('menu', domString);
     })
     .catch((error) => console.error(error));
